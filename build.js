@@ -1,5 +1,5 @@
 // Genera il sito statico LAVERTT in dist/ partendo da src/
-// Uso: node build.js
+// Uso: node build.js  (poi fai commit anche della cartella docs/)
 const fs = require('fs');
 const path = require('path');
 
@@ -13,7 +13,7 @@ const QUIZ_URL = 'https://recruitment-platform-sable.vercel.app/';
 
 const SITE = 'https://lavertt.com';
 const SRC = path.join(__dirname, 'src');
-const OUT = path.join(__dirname, 'dist');
+const OUT = path.join(__dirname, 'docs'); // GitHub Pages pubblica la cartella docs/
 const NL = String.fromCharCode(10);
 
 // Nome file del canvas -> [percorso pubblico, file in uscita, titolo, descrizione]
@@ -127,4 +127,7 @@ fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="U
 ${urls}
 </urlset>
 `);
+// GitHub Pages: dominio personalizzato e nessuna elaborazione Jekyll
+fs.writeFileSync(path.join(OUT, 'CNAME'), 'lavertt.com' + NL);
+fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 console.log('Fatto.');
