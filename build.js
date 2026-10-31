@@ -14,6 +14,7 @@ const QUIZ_URL = 'https://recruitment-platform-sable.vercel.app/';
 const SITE = 'https://lavertt.com';
 const SRC = path.join(__dirname, 'src');
 const OUT = path.join(__dirname, 'dist');
+const NL = String.fromCharCode(10);
 
 // Nome file del canvas -> [percorso pubblico, file in uscita, titolo, descrizione]
 const PAGES = {
@@ -29,39 +30,39 @@ const PAGES = {
 };
 
 const read = (p) => fs.readFileSync(path.join(SRC, p), 'utf8');
+const swap = (text, from, to) => text.split(from).join(to);
 
 const hasLogoPng = fs.existsSync(path.join(__dirname, 'public', 'logo.png'));
-const WORDMARK = (h) => `<span style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: ${Math.round(h * 0.86)}px; line-height: ${h}px; font-weight: 700; letter-spacing: 0.04em; color: #2444B0;">LAVERTT</span>`;
+const LOGO_BLOB = '/_blob/bb16287e8bc3c9f7eab98e379d6c6cb8';
+const wordmark = (size) => `<span style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: ${size}; font-weight: 700; letter-spacing: 0.04em; line-height: 1.15; color: #2444B0;">LAVERTT</span>`;
 
 function transform(html) {
   // Header e Footer condivisi
-  html = html.replace(/<dc-import name="Header"[^>]*><\/dc-import>/g, read('partials/header.html'));
-  html = html.replace(/<dc-import name="Footer"[^>]*><\/dc-import>/g, read('partials/footer.html'));
+  html = swap(html, '<dc-import name="Header" hint-size="100%,84px"></dc-import>', read('partials/header.html'));
+  html = swap(html, '<dc-import name="Footer" hint-size="100%,470px"></dc-import>', read('partials/footer.html'));
 
   // Logo: usa public/logo.png se presente, altrimenti la scritta LAVERTT
-  html = html.replace(/<img src="\/_blob\/[0-9a-f]+" alt="LAVERTT" style="height: (\d+)px;[^"]*">/g, (m, h) =>
-    hasLogoPng
-      ? `<img src="/logo.png" alt="LAVERTT" style="height: ${h}px; width: auto; display: block;">`
-      : WORDMARK(Number(h)));
-  // Logo grande decorativo (es. pagina Chi siamo)
-  html = html.replace(/<img src="\/_blob\/[0-9a-f]+" alt="" style="width: (\d+)%;[^"]*">/g, (m, w) =>
-    hasLogoPng
-      ? `<img src="/logo.png" alt="" style="width: ${w}%; height: auto; display: block;">`
-      : `<span style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(34px, 5vw, 52px); font-weight: 700; letter-spacing: 0.04em; color: #2444B0;">LAVERTT</span>`);
+  const logos = [
+    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 28px; width: auto; display: block;">`, '24px'],
+    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 30px; width: auto; display: block;">`, '26px'],
+    [`<img src="${LOGO_BLOB}" alt="" style="width: 62%; height: auto; display: block;">`, 'clamp(34px, 5vw, 52px)'],
+  ];
+  for (const [tag, size] of logos) {
+    html = swap(html, tag, hasLogoPng ? swap(tag, LOGO_BLOB, '/logo.png') : wordmark(size));
+  }
 
-  // Link tra le pagine del canvas -> URL puliti
-  html = html.replace(/href="([A-Za-z0-9-]+)\.dc\.html(#[^"]*)?"/g, (m, name, hash) => {
-    const page = PAGES[name];
-    if (!page) throw new Error('Pagina sconosciuta nel link: ' + name);
-    return `href="${page[0]}${hash || ''}"`;
-  });
+  // Link tra le pagine del canvas -> indirizzi puliti (es. /chi-siamo)
+  for (const [name, [url]] of Object.entries(PAGES)) {
+    html = swap(html, `href="${name}.dc.html`, `href="${url}`);
+  }
 
   // WhatsApp e questionario
-  html = html.replace(/https:\/\/wa\.me\/390000000000/g, `https://wa.me/${WHATSAPP_NUMBER}`);
-  html = html.replace(/https:\/\/recruitment-platform-sable\.vercel\.app\//g, QUIZ_URL);
+  html = swap(html, 'https://wa.me/390000000000', 'https://wa.me/' + WHATSAPP_NUMBER);
+  html = swap(html, 'https://recruitment-platform-sable.vercel.app/', QUIZ_URL);
 
-  if (/\/_blob\//.test(html)) throw new Error('Immagine del canvas non convertita');
-  if (/<(dc-import|sc-for|sc-if|x-dc|helmet)\b/.test(html)) throw new Error('Tag del canvas rimasto nella pagina');
+  for (const leftover of ['/_blob/', '.dc.html', '<dc-import', '<x-dc', '<helmet', '<sc-']) {
+    if (html.includes(leftover)) throw new Error('Elemento del canvas non convertito: ' + leftover);
+  }
   return html;
 }
 
@@ -74,12 +75,11 @@ fs.mkdirSync(OUT, { recursive: true });
 for (const [name, [url, file, title, desc]] of Object.entries(PAGES)) {
   const srcFile = `pages/${name}.html`;
   if (!fs.existsSync(path.join(SRC, srcFile))) { console.warn('Manca ' + srcFile + ', salto'); continue; }
-  let body = read(srcFile);
-  // CSS specifico della pagina (facoltativo): src/pages/<Nome>.css
-  const extraCssPath = path.join(SRC, 'pages', name + '.css');
-  const extraCss = fs.existsSync(extraCssPath) ? fs.readFileSync(extraCssPath, 'utf8') : '';
-  body = transform(body);
-  const canonical = SITE + (url === '/' ? '/' : url);
+  const body = transform(read(srcFile));
+  const canonical = SITE + url;
+  const caveat = body.includes("'Caveat'")
+    ? '<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&amp;display=swap" rel="stylesheet">' + NL
+    : '';
   const page = `<!doctype html>
 <html lang="it">
 <head>
@@ -99,15 +99,13 @@ for (const [name, [url, file, title, desc]] of Object.entries(PAGES)) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
-${/'Caveat'/.test(body) ? '<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&amp;display=swap" rel="stylesheet">\n' : ''}<style>
-${BASE_CSS}${extraCss}
-</style>
+${caveat}<style>
+${BASE_CSS}</style>
 </head>
 <body>
 ${body.trim()}
 <script>
-${SCRIPT}
-</script>
+${SCRIPT}</script>
 </body>
 </html>
 `;
@@ -120,6 +118,13 @@ const pub = path.join(__dirname, 'public');
 for (const f of fs.readdirSync(pub)) fs.copyFileSync(path.join(pub, f), path.join(OUT, f));
 
 // Sitemap
-const urls = Object.values(PAGES).filter(([, file]) => fs.existsSync(path.join(OUT, file))).map(([u]) => `  <url><loc>${SITE}${u === '/' ? '/' : u}</loc></url>`).join('\n');
-fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
+const urls = Object.values(PAGES)
+  .filter(([, file]) => fs.existsSync(path.join(OUT, file)))
+  .map(([u]) => `  <url><loc>${SITE}${u}</loc></url>`)
+  .join(NL);
+fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`);
 console.log('Fatto.');
