@@ -32,7 +32,8 @@ const PAGES = {
 const read = (p) => fs.readFileSync(path.join(SRC, p), 'utf8');
 const swap = (text, from, to) => text.split(from).join(to);
 
-const hasLogoPng = fs.existsSync(path.join(__dirname, 'public', 'logo.png'));
+// Logo: public/logo.svg (vettoriale, preferito) oppure public/logo.png
+const LOGO_FILE = ['logo.svg', 'logo.png'].find((f) => fs.existsSync(path.join(__dirname, 'public', f)));
 const LOGO_BLOB = '/_blob/bb16287e8bc3c9f7eab98e379d6c6cb8';
 const wordmark = (size) => `<span style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: ${size}; font-weight: 700; letter-spacing: 0.04em; line-height: 1.15; color: #2444B0;">LAVERTT</span>`;
 
@@ -41,14 +42,14 @@ function transform(html) {
   html = swap(html, '<dc-import name="Header" hint-size="100%,84px"></dc-import>', read('partials/header.html'));
   html = swap(html, '<dc-import name="Footer" hint-size="100%,470px"></dc-import>', read('partials/footer.html'));
 
-  // Logo: usa public/logo.png se presente, altrimenti la scritta LAVERTT
+  // Logo: usa public/logo.svg o logo.png se presente, altrimenti la scritta LAVERTT
   const logos = [
     [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 28px; width: auto; display: block;">`, '24px'],
     [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 30px; width: auto; display: block;">`, '26px'],
     [`<img src="${LOGO_BLOB}" alt="" style="width: 62%; height: auto; display: block;">`, 'clamp(34px, 5vw, 52px)'],
   ];
   for (const [tag, size] of logos) {
-    html = swap(html, tag, hasLogoPng ? swap(tag, LOGO_BLOB, '/logo.png') : wordmark(size));
+    html = swap(html, tag, LOGO_FILE ? swap(tag, LOGO_BLOB, '/' + LOGO_FILE) : wordmark(size));
   }
 
   // Link tra le pagine del canvas -> indirizzi puliti (es. /chi-siamo)
