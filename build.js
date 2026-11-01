@@ -33,6 +33,7 @@ const PAGES = {
   'Preparazione-colloquio': ['/preparazione-colloquio', 'preparazione-colloquio.html', 'Preparazione colloquio — LAVERTT', 'Simulazione di colloquio in videochiamata con feedback su risposte, tono e linguaggio del corpo.'],
   'Privacy-policy': ['/privacy-policy', 'privacy-policy.html', 'Privacy Policy — LAVERTT', 'Quali dati personali tratta LAVERTT, perché, per quanto tempo e quali sono i tuoi diritti.'],
   'Cookie-policy': ['/cookie-policy', 'cookie-policy.html', 'Cookie Policy — LAVERTT', 'Quali cookie usa il sito LAVERTT e come puoi gestirli.'],
+  'Termini-e-condizioni': ['/termini-e-condizioni', 'termini-e-condizioni.html', 'Termini e Condizioni — LAVERTT', 'Le condizioni per acquistare i servizi LAVERTT: acquisto, pagamento, tempi di consegna, modifiche e diritto di recesso.'],
 };
 
 const read = (p) => fs.readFileSync(path.join(SRC, p), 'utf8');
