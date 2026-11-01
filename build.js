@@ -31,6 +31,7 @@ const PAGES = {
   'Lettera-presentazione': ['/lettera-presentazione', 'lettera-presentazione.html', 'Lettera di presentazione — LAVERTT', 'Lettera di presentazione su misura per il ruolo e l’azienda, con la versione breve per email e LinkedIn.'],
   'Messaggi-recruiter': ['/messaggi-recruiter', 'messaggi-recruiter.html', 'Messaggi per recruiter — LAVERTT', 'Messaggi scritti sul tuo profilo per contattare direttamente chi seleziona, con la strategia per usarli.'],
   'Preparazione-colloquio': ['/preparazione-colloquio', 'preparazione-colloquio.html', 'Preparazione colloquio — LAVERTT', 'Simulazione di colloquio in videochiamata con feedback su risposte, tono e linguaggio del corpo.'],
+  'Mappatura-aziende': ['/mappatura-aziende', 'mappatura-aziende.html', 'Mappatura aziende — LAVERTT', '20 aziende adatte al tuo profilo nella zona che scegli, con dove e come candidarti a ognuna. Consegna in 7 giorni lavorativi.'],
   'Privacy-policy': ['/privacy-policy', 'privacy-policy.html', 'Privacy Policy — LAVERTT', 'Quali dati personali tratta LAVERTT, perché, per quanto tempo e quali sono i tuoi diritti.'],
   'Cookie-policy': ['/cookie-policy', 'cookie-policy.html', 'Cookie Policy — LAVERTT', 'Quali cookie usa il sito LAVERTT e come puoi gestirli.'],
   'Termini-e-condizioni': ['/termini-e-condizioni', 'termini-e-condizioni.html', 'Termini e Condizioni — LAVERTT', 'Le condizioni per acquistare i servizi LAVERTT: acquisto, pagamento, tempi di consegna, modifiche e diritto di recesso.'],
