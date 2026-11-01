@@ -6,7 +6,7 @@ const path = require('path');
 // ---------------------------------------------------------------
 // IMPOSTAZIONI DA MODIFICARE
 // Numero WhatsApp Business (formato internazionale senza + e spazi, es. 393331234567)
-const WHATSAPP_NUMBER = '390000000000';
+const WHATSAPP_NUMBER = '393780950535';
 // Link del questionario
 const QUIZ_URL = 'https://recruitment-platform-sable.vercel.app/';
 // ---------------------------------------------------------------
@@ -128,6 +128,6 @@ ${urls}
 </urlset>
 `);
 // GitHub Pages: dominio personalizzato e nessuna elaborazione Jekyll
-fs.writeFileSync(path.join(OUT, 'CNAME'), 'lavertt.com' + NL);
+fs.writeFileSync(path.join(OUT, 'CNAME'), 'lavertt.com');
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 console.log('Fatto.');
