@@ -9,6 +9,10 @@ const path = require('path');
 const WHATSAPP_NUMBER = '393780950535';
 // Link del questionario
 const QUIZ_URL = 'https://recruitment-platform-sable.vercel.app/';
+// Email per le richieste sulla privacy (pagina Privacy Policy)
+const PRIVACY_EMAIL = 'privacy@lavertt.com';
+// Data dell'ultimo aggiornamento di Privacy e Cookie Policy
+const POLICY_DATE = '1 novembre 2026';
 // ---------------------------------------------------------------
 
 const SITE = 'https://lavertt.com';
@@ -27,6 +31,8 @@ const PAGES = {
   'Lettera-presentazione': ['/lettera-presentazione', 'lettera-presentazione.html', 'Lettera di presentazione — LAVERTT', 'Lettera di presentazione su misura per il ruolo e l’azienda, con la versione breve per email e LinkedIn.'],
   'Messaggi-recruiter': ['/messaggi-recruiter', 'messaggi-recruiter.html', 'Messaggi per recruiter — LAVERTT', 'Messaggi scritti sul tuo profilo per contattare direttamente chi seleziona, con la strategia per usarli.'],
   'Preparazione-colloquio': ['/preparazione-colloquio', 'preparazione-colloquio.html', 'Preparazione colloquio — LAVERTT', 'Simulazione di colloquio in videochiamata con feedback su risposte, tono e linguaggio del corpo.'],
+  'Privacy-policy': ['/privacy-policy', 'privacy-policy.html', 'Privacy Policy — LAVERTT', 'Quali dati personali tratta LAVERTT, perché, per quanto tempo e quali sono i tuoi diritti.'],
+  'Cookie-policy': ['/cookie-policy', 'cookie-policy.html', 'Cookie Policy — LAVERTT', 'Quali cookie usa il sito LAVERTT e come puoi gestirli.'],
 };
 
 const read = (p) => fs.readFileSync(path.join(SRC, p), 'utf8');
@@ -61,6 +67,11 @@ function transform(html) {
   html = swap(html, 'https://wa.me/390000000000', 'https://wa.me/' + WHATSAPP_NUMBER);
   html = swap(html, 'https://recruitment-platform-sable.vercel.app/', QUIZ_URL);
 
+  // Dati delle pagine Privacy e Cookie
+  html = swap(html, '{{PRIVACY_EMAIL}}', PRIVACY_EMAIL);
+  html = swap(html, '{{POLICY_DATE}}', POLICY_DATE);
+  if (html.includes('{{')) throw new Error('Segnaposto non sostituito nella pagina');
+
   for (const leftover of ['/_blob/', '.dc.html', '<dc-import', '<x-dc', '<helmet', '<sc-']) {
     if (html.includes(leftover)) throw new Error('Elemento del canvas non convertito: ' + leftover);
   }
@@ -76,11 +87,10 @@ fs.mkdirSync(OUT, { recursive: true });
 for (const [name, [url, file, title, desc]] of Object.entries(PAGES)) {
   const srcFile = `pages/${name}.html`;
   if (!fs.existsSync(path.join(SRC, srcFile))) { console.warn('Manca ' + srcFile + ', salto'); continue; }
-  const body = transform(read(srcFile));
+  const raw = read(srcFile);
+  if (raw.includes('{{PRIVACY_EMAIL}}') && !PRIVACY_EMAIL) throw new Error('Manca PRIVACY_EMAIL in cima a build.js');
+  const body = transform(raw);
   const canonical = SITE + url;
-  const caveat = body.includes("'Caveat'")
-    ? '<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&amp;display=swap" rel="stylesheet">' + NL
-    : '';
   const page = `<!doctype html>
 <html lang="it">
 <head>
@@ -97,10 +107,9 @@ for (const [name, [url, file, title, desc]] of Object.entries(PAGES)) {
 <meta property="og:locale" content="it_IT">
 <meta name="theme-color" content="#D9E0FF">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
-${caveat}<style>
+<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plus-jakarta-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
 ${BASE_CSS}</style>
 </head>
 <body>
@@ -114,9 +123,8 @@ ${SCRIPT}</script>
   console.log('ok  ' + file);
 }
 
-// File statici (favicon, logo, robots...)
-const pub = path.join(__dirname, 'public');
-for (const f of fs.readdirSync(pub)) fs.copyFileSync(path.join(pub, f), path.join(OUT, f));
+// File statici (favicon, logo, caratteri, robots...)
+fs.cpSync(path.join(__dirname, 'public'), OUT, { recursive: true });
 
 // Sitemap
 const urls = Object.values(PAGES)

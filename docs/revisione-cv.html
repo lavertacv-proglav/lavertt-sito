@@ -14,10 +14,8 @@
 <meta property="og:locale" content="it_IT">
 <meta name="theme-color" content="#D9E0FF">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plus-jakarta-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 body{margin:0}
 html{scroll-behavior:smooth}
@@ -35,6 +33,29 @@ summary svg{transition:transform .15s}
 .lv-dd-menu a:hover,.lv-dd-menu a:focus-visible{background:#F2F4FF;color:#14162B}
 .lv-dd-btn svg{transition:transform .15s}
 .lv-dd.open .lv-dd-btn svg{transform:rotate(180deg)}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/inter-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/caveat-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Caveat';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/caveat-latin-600-normal.woff2) format('woff2')}
+.lv-legal{max-width:760px;margin:0 auto;padding:72px 24px 104px;box-sizing:border-box;font-size:16px;line-height:1.7;color:#3D4054}
+.lv-legal h2{margin:48px 0 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:600;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
+.lv-legal h2:first-child{margin-top:0}
+.lv-legal h3{margin:28px 0 10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:600;color:#14162B}
+.lv-legal p{margin:0 0 14px}
+.lv-legal ul{margin:0 0 16px;padding-left:22px}
+.lv-legal li{margin:0 0 8px}
+.lv-legal strong{color:#14162B;font-weight:600}
+.lv-legal a{color:#2444B0;font-weight:500;text-underline-offset:3px}
+.lv-legal .lv-table{overflow-x:auto;margin:6px 0 20px;border:1px solid #E2E5F0;border-radius:14px}
+.lv-legal table{width:100%;min-width:560px;border-collapse:collapse;font-size:14.5px;line-height:1.5}
+.lv-legal th{text-align:left;font-weight:600;color:#14162B;background:#F2F4FF;padding:12px 14px;border-bottom:1px solid #E2E5F0}
+.lv-legal td{padding:12px 14px;border-bottom:1px solid #E2E5F0;vertical-align:top}
+.lv-legal tr:last-child td{border-bottom:none}
+.lv-legal .lv-note{background:#F2F4FF;border-radius:16px;padding:18px 20px;margin:0 0 20px;color:#14162B}
 </style>
 </head>
 <body>
@@ -250,8 +271,8 @@ summary svg{transition:transform .15s}
 </div>
 <div style="max-width: 1240px; margin: 48px auto 0; padding: 0 24px 32px; box-sizing: border-box;">
 <div style="border-top: 1px solid #D5D9E6; padding-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 32px; font-size: 14px; color: #5F6275;">
-<a href="#" style="color: #5F6275; text-decoration: none;">Privacy Policy</a>
-<a href="#" style="color: #5F6275; text-decoration: none;">Cookie Policy</a>
+<a href="/privacy-policy" style="color: #5F6275; text-decoration: none;">Privacy Policy</a>
+<a href="/cookie-policy" style="color: #5F6275; text-decoration: none;">Cookie Policy</a>
 <a href="#" style="color: #5F6275; text-decoration: none;">Termini e Condizioni</a>
 <span style="margin-left: auto;">© 2026 LAVERTT — Tutti i diritti riservati</span>
 </div>
