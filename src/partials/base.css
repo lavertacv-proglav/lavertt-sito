@@ -7,10 +7,10 @@ summary::-webkit-details-marker{display:none}
 details[open]>summary svg{transform:rotate(45deg)}
 summary svg{transition:transform .15s}
 .lv-dd{position:relative}
-.lv-dd-menu{display:none;position:absolute;top: 100%;left: -13px;z-index:50;min-width: 210.5px;margin: 0;padding: 6.5px;list-style:none;background:#FFFFFF;border:1.5px solid #14162B;border-radius: 11.5px;box-shadow:0 12px 28px rgba(20,22,43,.12)}
+.lv-dd-menu{display:none;position:absolute;top: 100%;left: -11.5px;z-index:50;min-width: 189.5px;margin: 0;padding: 6px;list-style:none;background:#FFFFFF;border:1.5px solid #14162B;border-radius: 10.5px;box-shadow:0 12px 28px rgba(20,22,43,.12)}
 .lv-dd.open .lv-dd-menu{display:block}
 @media (hover:hover){.lv-dd:hover .lv-dd-menu{display:block}}
-.lv-dd-menu a{display:flex;align-items:center;min-height: 35.5px;padding: 0 10px;border-radius: 6.5px;font-size: 13px;font-weight:500;color:#14162B;text-decoration:none}
+.lv-dd-menu a{display:flex;align-items:center;min-height: 32px;padding: 0 9px;border-radius: 6px;font-size: 11.5px;font-weight:500;color:#14162B;text-decoration:none}
 .lv-dd-menu a:hover,.lv-dd-menu a:focus-visible{background:#F2F4FF;color:#14162B}
 .lv-dd-btn svg{transition:transform .15s}
 .lv-dd.open .lv-dd-btn svg{transform:rotate(180deg)}
@@ -22,18 +22,18 @@ summary svg{transition:transform .15s}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/caveat-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/caveat-latin-600-normal.woff2) format('woff2')}
-.lv-legal{max-width: 615.5px;margin: 0 auto;padding: 58.5px 19.5px 84px;box-sizing:border-box;font-size: 14px;line-height:1.7;color:#3D4054}
-.lv-legal h2{margin: 38.5px 0 11.5px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 21px;font-weight:600;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
+.lv-legal{max-width: 554px;margin: 0 auto;padding: 52.5px 17.5px 75.5px;box-sizing:border-box;font-size: 12.5px;line-height:1.7;color:#3D4054}
+.lv-legal h2{margin: 34.5px 0 10.5px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 19px;font-weight:600;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
 .lv-legal h2:first-child{margin-top: 0}
-.lv-legal h3{margin: 22.5px 0 8px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 16px;font-weight:600;color:#14162B}
-.lv-legal p{margin: 0 0 11.5px}
-.lv-legal ul{margin: 0 0 13px;padding-left: 18px}
-.lv-legal li{margin: 0 0 6.5px}
+.lv-legal h3{margin: 20.5px 0 7px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 14.5px;font-weight:600;color:#14162B}
+.lv-legal p{margin: 0 0 10.5px}
+.lv-legal ul{margin: 0 0 11.5px;padding-left: 16px}
+.lv-legal li{margin: 0 0 6px}
 .lv-legal strong{color:#14162B;font-weight:600}
 .lv-legal a{color:#2444B0;font-weight:500;text-underline-offset:3px}
-.lv-legal .lv-table{overflow-x:auto;margin: 5px 0 16px;border:1px solid #E2E5F0;border-radius: 11.5px}
-.lv-legal table{width: 100%;min-width: 453.5px;border-collapse:collapse;font-size: 13px;line-height:1.5}
-.lv-legal th{text-align:left;font-weight:600;color:#14162B;background:#F2F4FF;padding: 10px 11.5px;border-bottom:1px solid #E2E5F0}
-.lv-legal td{padding: 10px 11.5px;border-bottom:1px solid #E2E5F0;vertical-align:top}
+.lv-legal .lv-table{overflow-x:auto;margin: 4.5px 0 14.5px;border:1px solid #E2E5F0;border-radius: 10.5px}
+.lv-legal table{width: 100%;min-width: 408px;border-collapse:collapse;font-size: 11.5px;line-height:1.5}
+.lv-legal th{text-align:left;font-weight:600;color:#14162B;background:#F2F4FF;padding: 9px 10.5px;border-bottom:1px solid #E2E5F0}
+.lv-legal td{padding: 9px 10.5px;border-bottom:1px solid #E2E5F0;vertical-align:top}
 .lv-legal tr:last-child td{border-bottom:none}
-.lv-legal .lv-note{background:#F2F4FF;border-radius: 13px;padding: 14.5px 16px;margin: 0 0 16px;color:#14162B}
+.lv-legal .lv-note{background:#F2F4FF;border-radius: 11.5px;padding: 13px 14.5px;margin: 0 0 14.5px;color:#14162B}
