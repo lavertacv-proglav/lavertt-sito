@@ -56,6 +56,11 @@ summary svg{transition:transform .15s}
 .lv-legal td{padding: 9px 10.5px;border-bottom:1px solid #E2E5F0;vertical-align:top}
 .lv-legal tr:last-child td{border-bottom:none}
 .lv-legal .lv-note{background:#F2F4FF;border-radius: 11.5px;padding: 13px 14.5px;margin: 0 0 14.5px;color:#14162B}
+.js .lv-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.js .lv-reveal.lv-in{opacity:1;transform:none}
+a,button{transition:transform .2s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease}
+a:hover{transform:translateY(-1px)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .lv-reveal{opacity:1;transform:none}a:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -257,6 +262,18 @@ summary svg{transition:transform .15s}
     dd.addEventListener('keydown', function (e) { if (e.key === 'Escape') { set(false); btn.focus(); } });
     document.addEventListener('click', function (e) { if (!dd.contains(e.target)) set(false); });
   });
+})();
+(function () {
+  document.documentElement.classList.add('js');
+  var els = document.querySelectorAll('section, footer');
+  els.forEach(function (el) { el.classList.add('lv-reveal'); });
+  if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('lv-in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('lv-in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
 })();
 </script>
 </body>
