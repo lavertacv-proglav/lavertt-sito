@@ -1,16 +1,16 @@
-body{margin:0}
+body{margin: 0}
 html{scroll-behavior:smooth}
 a{color:#2444B0}a:hover{color:#1B3590}
-img,svg{max-width:100%}
+img,svg{max-width: 100%}
 [id]{scroll-margin-top:24px}
 summary::-webkit-details-marker{display:none}
 details[open]>summary svg{transform:rotate(45deg)}
 summary svg{transition:transform .15s}
 .lv-dd{position:relative}
-.lv-dd-menu{display:none;position:absolute;top:100%;left:-16px;z-index:50;min-width:260px;margin:0;padding:8px;list-style:none;background:#FFFFFF;border:1.5px solid #14162B;border-radius:14px;box-shadow:0 12px 28px rgba(20,22,43,.12)}
+.lv-dd-menu{display:none;position:absolute;top: 100%;left: -14.5px;z-index:50;min-width: 234px;margin: 0;padding: 7px;list-style:none;background:#FFFFFF;border:1.5px solid #14162B;border-radius: 12.5px;box-shadow:0 12px 28px rgba(20,22,43,.12)}
 .lv-dd.open .lv-dd-menu{display:block}
 @media (hover:hover){.lv-dd:hover .lv-dd-menu{display:block}}
-.lv-dd-menu a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;font-size: 16px;font-weight:500;color:#14162B;text-decoration:none}
+.lv-dd-menu a{display:flex;align-items:center;min-height: 39.5px;padding: 0 11px;border-radius: 7px;font-size: 14.5px;font-weight:500;color:#14162B;text-decoration:none}
 .lv-dd-menu a:hover,.lv-dd-menu a:focus-visible{background:#F2F4FF;color:#14162B}
 .lv-dd-btn svg{transition:transform .15s}
 .lv-dd.open .lv-dd-btn svg{transform:rotate(180deg)}
@@ -22,18 +22,18 @@ summary svg{transition:transform .15s}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/caveat-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/caveat-latin-600-normal.woff2) format('woff2')}
-.lv-legal{max-width:760px;margin:0 auto;padding:72px 24px 104px;box-sizing:border-box;font-size: 17px;line-height:1.7;color:#3D4054}
-.lv-legal h2{margin:48px 0 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 26px;font-weight:600;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
-.lv-legal h2:first-child{margin-top:0}
-.lv-legal h3{margin:28px 0 10px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 19.5px;font-weight:600;color:#14162B}
-.lv-legal p{margin:0 0 14px}
-.lv-legal ul{margin:0 0 16px;padding-left:22px}
-.lv-legal li{margin:0 0 8px}
+.lv-legal{max-width: 684px;margin: 0 auto;padding: 65px 21.5px 93.5px;box-sizing:border-box;font-size: 15.5px;line-height:1.7;color:#3D4054}
+.lv-legal h2{margin: 43px 0 12.5px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 23.5px;font-weight:600;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
+.lv-legal h2:first-child{margin-top: 0}
+.lv-legal h3{margin: 25px 0 9px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 17.5px;font-weight:600;color:#14162B}
+.lv-legal p{margin: 0 0 12.5px}
+.lv-legal ul{margin: 0 0 14.5px;padding-left: 20px}
+.lv-legal li{margin: 0 0 7px}
 .lv-legal strong{color:#14162B;font-weight:600}
 .lv-legal a{color:#2444B0;font-weight:500;text-underline-offset:3px}
-.lv-legal .lv-table{overflow-x:auto;margin:6px 0 20px;border:1px solid #E2E5F0;border-radius:14px}
-.lv-legal table{width:100%;min-width:560px;border-collapse:collapse;font-size: 16px;line-height:1.5}
-.lv-legal th{text-align:left;font-weight:600;color:#14162B;background:#F2F4FF;padding:12px 14px;border-bottom:1px solid #E2E5F0}
-.lv-legal td{padding:12px 14px;border-bottom:1px solid #E2E5F0;vertical-align:top}
+.lv-legal .lv-table{overflow-x:auto;margin: 5.5px 0 18px;border:1px solid #E2E5F0;border-radius: 12.5px}
+.lv-legal table{width: 100%;min-width: 504px;border-collapse:collapse;font-size: 14.5px;line-height:1.5}
+.lv-legal th{text-align:left;font-weight:600;color:#14162B;background:#F2F4FF;padding: 11px 12.5px;border-bottom:1px solid #E2E5F0}
+.lv-legal td{padding: 11px 12.5px;border-bottom:1px solid #E2E5F0;vertical-align:top}
 .lv-legal tr:last-child td{border-bottom:none}
-.lv-legal .lv-note{background:#F2F4FF;border-radius:16px;padding:18px 20px;margin:0 0 20px;color:#14162B}
+.lv-legal .lv-note{background:#F2F4FF;border-radius: 14.5px;padding: 16px 18px;margin: 0 0 18px;color:#14162B}
