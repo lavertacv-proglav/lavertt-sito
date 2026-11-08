@@ -11,8 +11,10 @@ const WHATSAPP_NUMBER = '393780950535';
 const QUIZ_URL = 'https://www.lavertt.app/';
 // Email per le richieste sulla privacy (pagina Privacy Policy)
 const PRIVACY_EMAIL = 'privacy@lavertt.com';
-// Data dell'ultimo aggiornamento di Privacy e Cookie Policy
+// Data dell'ultimo aggiornamento di Cookie Policy e Termini
 const POLICY_DATE = '2 novembre 2026';
+// Data dell'ultimo aggiornamento della Privacy Policy
+const PRIVACY_DATE = '8 novembre 2026';
 // ---------------------------------------------------------------
 
 const SITE = 'https://lavertt.com';
@@ -70,6 +72,7 @@ function transform(html) {
 
   // Dati delle pagine Privacy e Cookie
   html = swap(html, '{{PRIVACY_EMAIL}}', PRIVACY_EMAIL);
+  html = swap(html, '{{PRIVACY_DATE}}', PRIVACY_DATE);
   html = swap(html, '{{POLICY_DATE}}', POLICY_DATE);
   if (html.includes('{{')) throw new Error('Segnaposto non sostituito nella pagina');
 
