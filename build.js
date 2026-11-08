@@ -8,7 +8,7 @@ const path = require('path');
 // Numero WhatsApp Business (formato internazionale senza + e spazi, es. 393331234567)
 const WHATSAPP_NUMBER = '393780950535';
 // Link del questionario
-const QUIZ_URL = 'https://recruitment-platform-sable.vercel.app/';
+const QUIZ_URL = 'https://www.lavertt.app/';
 // Email per le richieste sulla privacy (pagina Privacy Policy)
 const PRIVACY_EMAIL = 'privacy@lavertt.com';
 // Data dell'ultimo aggiornamento di Privacy e Cookie Policy
