@@ -11,10 +11,10 @@ const WHATSAPP_NUMBER = '393780950535';
 const QUIZ_URL = 'https://www.lavertt.app/';
 // Email per le richieste sulla privacy (pagina Privacy Policy)
 const PRIVACY_EMAIL = 'privacy@lavertt.com';
-// Data dell'ultimo aggiornamento di Cookie Policy e Termini
+// Data dell'ultimo aggiornamento dei Termini e Condizioni
 const POLICY_DATE = '2 novembre 2026';
-// Data dell'ultimo aggiornamento della Privacy Policy
-const PRIVACY_DATE = '8 novembre 2026';
+// Data dell'ultimo aggiornamento della Privacy e Cookie Policy (pagina unica)
+const PRIVACY_DATE = '11 novembre 2026';
 // ---------------------------------------------------------------
 
 const SITE = 'https://lavertt.com';
@@ -33,8 +33,7 @@ const PAGES = {
   'Messaggi-recruiter': ['/messaggi-recruiter', 'messaggi-recruiter.html', 'Messaggi per recruiter — LAVERTT', 'Messaggi scritti sul tuo profilo per contattare direttamente chi seleziona, con la strategia per usarli.'],
   'Preparazione-colloquio': ['/preparazione-colloquio', 'preparazione-colloquio.html', 'Preparazione colloquio — LAVERTT', 'Simulazione di colloquio in videochiamata con feedback su risposte, tono e linguaggio del corpo.'],
   'Mappatura-aziende': ['/mappatura-aziende', 'mappatura-aziende.html', 'Mappatura aziende — LAVERTT', '20 aziende adatte al tuo profilo nelle zone che scegli, con dove e come candidarti a ognuna. Consegna in 7 giorni lavorativi.'],
-  'Privacy-policy': ['/privacy-policy', 'privacy-policy.html', 'Privacy Policy — LAVERTT', 'Quali dati personali tratta LAVERTT, perché, per quanto tempo e quali sono i tuoi diritti.'],
-  'Cookie-policy': ['/cookie-policy', 'cookie-policy.html', 'Cookie Policy — LAVERTT', 'Quali cookie usa il sito LAVERTT e come puoi gestirli.'],
+  'Privacy-policy': ['/privacy-policy', 'privacy-policy.html', 'Privacy e Cookie Policy — LAVERTT', 'Quali dati personali tratta LAVERTT, perché, per quanto tempo, quali cookie usa il sito e quali sono i tuoi diritti.'],
   'Termini-e-condizioni': ['/termini-e-condizioni', 'termini-e-condizioni.html', 'Termini e Condizioni — LAVERTT', 'Le condizioni per acquistare i servizi LAVERTT: acquisto, pagamento, tempi di consegna, modifiche e diritto di recesso.'],
 };
 
@@ -125,6 +124,29 @@ ${SCRIPT}</script>
 `;
   fs.writeFileSync(path.join(OUT, file), page);
   console.log('ok  ' + file);
+}
+
+// Vecchi indirizzi che rimandano a una nuova posizione (GitHub Pages non fa redirect lato server)
+const REDIRECTS = {
+  'cookie-policy.html': '/privacy-policy#cookies', // la Cookie Policy ora è la sezione 10 della Privacy Policy
+};
+for (const [file, target] of Object.entries(REDIRECTS)) {
+  fs.writeFileSync(path.join(OUT, file), `<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Cookie Policy — LAVERTT</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="${SITE}${target}">
+<meta http-equiv="refresh" content="0; url=${target}">
+</head>
+<body>
+<p>La Cookie Policy ora si trova nella <a href="${target}">Privacy e Cookie Policy</a>.</p>
+<script>location.replace('${target}');</script>
+</body>
+</html>
+`);
+  console.log('ok  ' + file + ' -> ' + target);
 }
 
 // File statici (favicon, logo, caratteri, robots...)
