@@ -15,6 +15,14 @@ const PRIVACY_EMAIL = 'privacy@lavertt.com';
 const POLICY_DATE = '2 novembre 2026';
 // Data dell'ultimo aggiornamento della Privacy e Cookie Policy (pagina unica)
 const PRIVACY_DATE = '11 novembre 2026';
+// Pixel Meta: incolla qui l'ID del Pixel (solo numeri) quando attivi le pubblicità.
+// Vuoto = Pixel spento e banner cookie nascosto (oggi il sito non usa cookie, quindi il banner non serve).
+// Appena inserisci l'ID, il banner compare a tutti e il Pixel parte solo dopo "Accetta".
+// Prima di attivarlo aggiorna la sezione 10 della Privacy Policy (oggi dice "non attivo").
+const META_PIXEL_ID = '';
+// Versione delle scelte sui cookie: aumentala di 1 quando aggiungi o cambi uno strumento,
+// così il banner viene richiesto di nuovo a tutti.
+const COOKIE_VERSION = 1;
 // ---------------------------------------------------------------
 
 const SITE = 'https://lavertt.com';
@@ -81,8 +89,13 @@ function transform(html) {
   return html;
 }
 
+if (!/^\d*$/.test(META_PIXEL_ID)) throw new Error('META_PIXEL_ID deve contenere solo numeri');
 const BASE_CSS = read('partials/base.css');
-const SCRIPT = read('partials/site.js');
+const COOKIE_CONFIG = 'window.LV_COOKIE = ' + JSON.stringify({ pixel: META_PIXEL_ID, version: COOKIE_VERSION }) + ';' + NL;
+const SCRIPT = read('partials/site.js') + COOKIE_CONFIG + read('partials/cookie.js');
+if (META_PIXEL_ID && read('pages/Privacy-policy.html').includes('Non attivo')) {
+  console.warn('ATTENZIONE: Pixel Meta attivo ma la Privacy Policy (sezione 10) dice ancora "Non attivo". Aggiornala.');
+}
 
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });

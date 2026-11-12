@@ -61,6 +61,39 @@ summary svg{transition:transform .15s}
 a,button{transition:transform .2s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease}
 a:hover{transform:translateY(-1px)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .lv-reveal{opacity:1;transform:none}a:hover{transform:none}}
+.lv-ck{position:fixed;inset:0;z-index:1000;display:flex;align-items:flex-end;justify-content:center;font-family:'Inter',system-ui,sans-serif;color:#14162B}
+.lv-ck[hidden]{display:none}
+.lv-ck-lock,.lv-ck-lock body{overflow:hidden}
+.lv-ck-backdrop{position:absolute;inset:0;background:rgba(20,22,43,.45)}
+.lv-ck-box{position:relative;width:100%;max-width:560px;max-height:calc(100% - 24px);overflow-y:auto;box-sizing:border-box;margin:0;padding:26px 22px calc(22px + env(safe-area-inset-bottom));background:#FFFFFF;border:1.5px solid #14162B;border-bottom:none;border-radius:20px 20px 0 0;box-shadow:0 -12px 40px rgba(20,22,43,.18)}
+@media (min-width:640px){.lv-ck{align-items:center;padding:24px}.lv-ck-box{border-bottom:1.5px solid #14162B;border-radius:20px;padding:30px 30px 26px}}
+.lv-ck-box h2{margin:0 40px 12px 0;font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;font-weight:700;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
+.lv-ck-box p{margin:0 0 10px;font-size:14px;line-height:1.6;color:#3D4054}
+.lv-ck-box strong{font-weight:600;color:#14162B}
+.lv-ck-box a{color:#2444B0;font-weight:500;text-underline-offset:3px}
+.lv-ck-x{position:absolute;top:16px;right:14px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;padding:0;border:none;border-radius:50%;background:transparent;color:#14162B;cursor:pointer}
+.lv-ck-x:hover{background:#F2F4FF}
+.lv-ck-box:focus{outline:none}
+.lv-ck-preview{display:inline-block;margin:0 0 12px!important;padding:4px 10px;border-radius:999px;background:#FFF4D6;color:#5C4400!important;font-size:12px!important;font-weight:600}
+.lv-ck-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.lv-ck-actions-one{grid-template-columns:1fr}
+.lv-ck-btn{min-height:48px;padding:0 16px;border:none;border-radius:999px;background:#2444B0;color:#FFFFFF;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.lv-ck-btn:hover{background:#1B3590}
+.lv-ck-link{display:block;margin:10px auto 0;min-height:44px;padding:0 12px;border:none;background:none;color:#2444B0;font:inherit;font-size:14.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.lv-ck-btn:focus-visible,.lv-ck-link:focus-visible,.lv-ck-x:focus-visible,.lv-ck-switch:focus-visible,.lv-ck-open:focus-visible{outline:3px solid #2444B0;outline-offset:3px}
+.lv-ck-intro{margin-bottom:14px!important}
+.lv-ck-cat{border:1px solid #E2E5F0;border-radius:14px;padding:14px 16px;margin:0 0 10px}
+.lv-ck-cat p{margin:6px 0 0;font-size:13px}
+.lv-ck-cat-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:15px;font-weight:600;color:#14162B;cursor:pointer}
+.lv-ck-always{font-size:12.5px;font-weight:600;color:#1C7A43;white-space:nowrap}
+.lv-ck-small{margin:12px 0 0!important;font-size:12.5px!important;text-align:center}
+.lv-ck-switch{appearance:none;-webkit-appearance:none;flex:none;position:relative;width:48px;height:28px;margin:0;border-radius:999px;background:#C9CEDF;cursor:pointer;transition:background-color .2s ease}
+.lv-ck-switch::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 3px rgba(20,22,43,.25);transition:transform .2s ease}
+.lv-ck-switch:checked{background:#2444B0}
+.lv-ck-switch:checked::after{transform:translateX(20px)}
+.lv-ck-open{padding:0;border:none;background:none;font:inherit;font-size:inherit;color:#5F6275;cursor:pointer}
+.lv-ck-open[hidden]{display:none}
+.lv-ck-open:hover{color:#2444B0}
 </style>
 </head>
 <body>
@@ -250,6 +283,7 @@ a:hover{transform:translateY(-1px)}
 <div style="border-top: 1px solid #D5D9E6; padding-top: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 7px 23.5px; font-size: 11.5px; color: #5F6275;">
 <a href="/privacy-policy" style="color: #5F6275; text-decoration: none;">Privacy Policy</a>
 <a href="/privacy-policy#cookies" style="color: #5F6275; text-decoration: none;">Cookie Policy</a>
+<button type="button" class="lv-ck-open" hidden>Preferenze cookie</button>
 <a href="/termini-e-condizioni" style="color: #5F6275; text-decoration: none;">Termini e Condizioni</a>
 <span style="margin-left: auto;">© 2026 LAVERTT — Tutti i diritti riservati</span>
 </div>
@@ -279,6 +313,164 @@ a:hover{transform:translateY(-1px)}
     });
   }, { threshold: 0.12 });
   els.forEach(function (el) { io.observe(el); });
+})();
+window.LV_COOKIE = {"pixel":"","version":1};
+// Banner cookie LAVERTT
+// - Compare solo se c'è almeno uno strumento che richiede il consenso (oggi: Pixel Meta, impostato in build.js).
+// - "Rifiuta", la X o il tasto Esc = solo cookie tecnici. Il Pixel non viene caricato finché non accetti.
+// - La scelta vale 6 mesi; cambiando COOKIE_VERSION in build.js il banner viene richiesto di nuovo a tutti.
+// - Anteprima senza effetti: aggiungi ?cookie-preview all'indirizzo (es. lavertt.com/?cookie-preview).
+(function () {
+  var C = window.LV_COOKIE || {};
+  var KEY = 'lv-cookie';
+  var SIX_MONTHS = 1000 * 60 * 60 * 24 * 182;
+  var preview = /[?&]cookie-preview(=|&|$)/.test(location.search);
+  var active = !!C.pixel;
+  if (!active && !preview) return;
+
+  function stored() {
+    try {
+      var s = JSON.parse(localStorage.getItem(KEY));
+      if (s && s.v === C.version && Date.now() - s.t < SIX_MONTHS) return s;
+    } catch (e) {}
+    return null;
+  }
+
+  function store(marketing) {
+    if (preview) return;
+    try { localStorage.setItem(KEY, JSON.stringify({ v: C.version, t: Date.now(), marketing: !!marketing })); } catch (e) {}
+  }
+
+  function startPixel() {
+    if (preview || !C.pixel || window.fbq) return;
+    /* eslint-disable */
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    /* eslint-enable */
+    window.fbq('init', C.pixel);
+    window.fbq('track', 'PageView');
+  }
+
+  function removeMarketingCookies() {
+    ['_fbp', '_fbc'].forEach(function (name) {
+      [location.hostname, '.' + location.hostname.replace(/^www\./, '')].forEach(function (domain) {
+        document.cookie = name + '=; Max-Age=0; path=/; domain=' + domain;
+      });
+      document.cookie = name + '=; Max-Age=0; path=/';
+    });
+  }
+
+  var X_ICON = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>';
+  var POLICY = '<a href="/privacy-policy#cookies">Privacy e Cookie Policy</a>';
+
+  var root = document.createElement('div');
+  root.className = 'lv-ck';
+  root.hidden = true;
+  root.innerHTML =
+    '<div class="lv-ck-backdrop"></div>' +
+    '<div class="lv-ck-box" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="lv-ck-title" aria-describedby="lv-ck-desc">' +
+      '<button type="button" class="lv-ck-x" data-ck="reject" aria-label="Chiudi: continua solo con i cookie tecnici">' + X_ICON + '</button>' +
+      (preview ? '<p class="lv-ck-preview">Anteprima: le scelte non vengono salvate</p>' : '') +
+      '<h2 id="lv-ck-title">Informativa sui cookie</h2>' +
+      '<div class="lv-ck-view" data-view="main">' +
+        '<div id="lv-ck-desc">' +
+          '<p>Usiamo cookie tecnici, necessari per far funzionare il sito. Solo con il tuo consenso usiamo anche il <strong>Pixel Meta</strong>, un cookie di marketing che misura i risultati delle nostre pubblicità su Instagram e Facebook.</p>' +
+          '<p>Se premi «Rifiuta» o la X, usiamo solo i cookie tecnici. Puoi cambiare idea quando vuoi da «Preferenze cookie», in fondo a ogni pagina. Tutti i dettagli nella ' + POLICY + '.</p>' +
+        '</div>' +
+        '<div class="lv-ck-actions">' +
+          '<button type="button" class="lv-ck-btn" data-ck="reject">Rifiuta</button>' +
+          '<button type="button" class="lv-ck-btn" data-ck="accept">Accetta</button>' +
+        '</div>' +
+        '<button type="button" class="lv-ck-link" data-ck="custom">Personalizza</button>' +
+      '</div>' +
+      '<div class="lv-ck-view" data-view="prefs" hidden>' +
+        '<p class="lv-ck-intro">Scegli quali cookie attivare. Puoi cambiare idea quando vuoi.</p>' +
+        '<div class="lv-ck-cat">' +
+          '<div class="lv-ck-cat-head"><span>Cookie tecnici</span><span class="lv-ck-always">Sempre attivi</span></div>' +
+          '<p>Servono a far funzionare il sito e a ricordare le tue scelte sui cookie. Non richiedono consenso.</p>' +
+        '</div>' +
+        '<div class="lv-ck-cat">' +
+          '<label class="lv-ck-cat-head" for="lv-ck-marketing"><span>Marketing (Pixel Meta)</span>' +
+            '<input type="checkbox" id="lv-ck-marketing" class="lv-ck-switch" role="switch"></label>' +
+          '<p>Misura i risultati delle nostre pubblicità su Instagram e Facebook. Fornitore: Meta Platforms Ireland Ltd. Durata: 3 mesi.</p>' +
+        '</div>' +
+        '<div class="lv-ck-actions lv-ck-actions-one">' +
+          '<button type="button" class="lv-ck-btn" data-ck="save">Salva le mie scelte</button>' +
+        '</div>' +
+        '<p class="lv-ck-small">Dettagli nella ' + POLICY + '.</p>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(root);
+
+  var box = root.querySelector('.lv-ck-box');
+  var views = root.querySelectorAll('.lv-ck-view');
+  var toggle = root.querySelector('#lv-ck-marketing');
+  var lastFocus = null;
+
+  function showView(name) {
+    views.forEach(function (v) { v.hidden = v.getAttribute('data-view') !== name; });
+    box.scrollTop = 0;
+    box.focus();
+  }
+
+  function open(view) {
+    lastFocus = document.activeElement;
+    var s = stored();
+    toggle.checked = !!(s && s.marketing);
+    root.hidden = false;
+    document.documentElement.classList.add('lv-ck-lock');
+    showView(view || 'main');
+  }
+
+  function close() {
+    root.hidden = true;
+    document.documentElement.classList.remove('lv-ck-lock');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function decide(marketing) {
+    var before = stored();
+    store(marketing);
+    close();
+    if (marketing) { startPixel(); return; }
+    if (!preview && before && before.marketing) {
+      // Consenso revocato: togliamo i cookie del Pixel e ricarichiamo la pagina senza Pixel
+      removeMarketingCookies();
+      location.reload();
+    }
+  }
+
+  root.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-ck]');
+    if (!btn) return;
+    var act = btn.getAttribute('data-ck');
+    if (act === 'accept') decide(true);
+    else if (act === 'reject') decide(false);
+    else if (act === 'custom') showView('prefs');
+    else if (act === 'save') decide(toggle.checked);
+  });
+
+  root.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { e.preventDefault(); decide(false); return; }
+    if (e.key !== 'Tab') return;
+    var items = Array.prototype.filter.call(
+      box.querySelectorAll('button, a[href], input:not([disabled])'),
+      function (el) { return el.offsetParent !== null; }
+    );
+    if (!items.length) return;
+    var first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  // Link "Preferenze cookie" nel footer
+  document.querySelectorAll('.lv-ck-open').forEach(function (link) {
+    link.hidden = false;
+    link.addEventListener('click', function () { open('prefs'); });
+  });
+
+  var choice = stored();
+  if (preview || !choice) open('main');
+  else if (choice.marketing) startPixel();
 })();
 </script>
 </body>
