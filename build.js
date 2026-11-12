@@ -14,10 +14,13 @@ const PRIVACY_EMAIL = 'privacy@lavertt.com';
 // Data dell'ultimo aggiornamento dei Termini e Condizioni
 const POLICY_DATE = '2 novembre 2026';
 // Data dell'ultimo aggiornamento della Privacy e Cookie Policy (pagina unica)
-const PRIVACY_DATE = '11 novembre 2026';
+const PRIVACY_DATE = '12 novembre 2026';
+// Banner cookie: true = compare al primo accesso anche se il Pixel Meta è spento.
+// false = compare solo quando il Pixel è attivo (con il Pixel attivo compare sempre).
+const MOSTRA_BANNER_COOKIE = true;
 // Pixel Meta: incolla qui l'ID del Pixel (solo numeri) quando attivi le pubblicità.
-// Vuoto = Pixel spento e banner cookie nascosto (oggi il sito non usa cookie, quindi il banner non serve).
-// Appena inserisci l'ID, il banner compare a tutti e il Pixel parte solo dopo "Accetta".
+// Vuoto = Pixel spento. Con l'ID il Pixel parte solo dopo "Accetta", e il banner
+// viene richiesto di nuovo a tutti (anche a chi aveva già scelto).
 // Prima di attivarlo aggiorna la sezione 10 della Privacy Policy (oggi dice "non attivo").
 const META_PIXEL_ID = '';
 // Versione delle scelte sui cookie: aumentala di 1 quando aggiungi o cambi uno strumento,
@@ -91,7 +94,11 @@ function transform(html) {
 
 if (!/^\d*$/.test(META_PIXEL_ID)) throw new Error('META_PIXEL_ID deve contenere solo numeri');
 const BASE_CSS = read('partials/base.css');
-const COOKIE_CONFIG = 'window.LV_COOKIE = ' + JSON.stringify({ pixel: META_PIXEL_ID, version: COOKIE_VERSION }) + ';' + NL;
+const COOKIE_CONFIG = 'window.LV_COOKIE = ' + JSON.stringify({
+  pixel: META_PIXEL_ID,
+  show: MOSTRA_BANNER_COOKIE || !!META_PIXEL_ID,
+  version: String(COOKIE_VERSION) + (META_PIXEL_ID ? '-pixel' : ''),
+}) + ';' + NL;
 const SCRIPT = read('partials/site.js') + COOKIE_CONFIG + read('partials/cookie.js');
 if (META_PIXEL_ID && read('pages/Privacy-policy.html').includes('Non attivo')) {
   console.warn('ATTENZIONE: Pixel Meta attivo ma la Privacy Policy (sezione 10) dice ancora "Non attivo". Aggiornala.');
