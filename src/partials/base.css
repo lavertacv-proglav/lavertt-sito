@@ -59,7 +59,8 @@ a:hover{transform:translateY(-1px)}
 .lv-ck-box a{color:#2444B0;font-weight:500;text-underline-offset:3px}
 .lv-ck-x{position:absolute;top:16px;right:14px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;padding:0;border:none;border-radius:50%;background:transparent;color:#14162B;cursor:pointer}
 .lv-ck-x:hover{background:#F2F4FF}
-.lv-ck-box:focus{outline:none}
+.lv-ck-box:focus:not(:focus-visible){outline:none}
+.lv-ck-box:focus-visible{outline:3px solid #2444B0;outline-offset:3px}
 .lv-ck-preview{display:inline-block;margin:0 0 12px!important;padding:4px 10px;border-radius:999px;background:#FFF4D6;color:#5C4400!important;font-size:12px!important;font-weight:600}
 .lv-ck-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
 .lv-ck-actions-one{grid-template-columns:1fr}

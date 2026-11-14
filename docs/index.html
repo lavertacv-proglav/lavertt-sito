@@ -1,71 +1,217 @@
 <!doctype html>
-<html lang="it">
+<html lang="it" data-type="service" data-radius="soft" data-buttons="arrow" data-motion>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LAVERTT — Inizia il tuo percorso verso il lavoro</title>
-<meta name="description" content="CV, LinkedIn, lettere e colloqui: prima capiamo di cosa hai bisogno, poi ti proponiamo solo quello. Valutazione iniziale gratuita, tutto online.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LAVERTT: CV, LinkedIn e colloqui per chi cerca lavoro</title>
+<meta name="description" content="Una persona legge il tuo CV e in 2 giorni lavorativi ti dice su WhatsApp di cosa hai bisogno. Valutazione gratuita, poi paghi solo i servizi che scegli.">
 <link rel="canonical" href="https://lavertt.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LAVERTT">
-<meta property="og:title" content="LAVERTT — Inizia il tuo percorso verso il lavoro">
-<meta property="og:description" content="CV, LinkedIn, lettere e colloqui: prima capiamo di cosa hai bisogno, poi ti proponiamo solo quello. Valutazione iniziale gratuita, tutto online.">
+<meta property="og:title" content="LAVERTT: CV, LinkedIn e colloqui per chi cerca lavoro">
+<meta property="og:description" content="Una persona legge il tuo CV e in 2 giorni lavorativi ti dice su WhatsApp di cosa hai bisogno. Valutazione gratuita, poi paghi solo i servizi che scegli.">
 <meta property="og:url" content="https://lavertt.com/">
+<meta property="og:image" content="https://lavertt.com/share.jpg">
 <meta property="og:locale" content="it_IT">
-<meta name="theme-color" content="#D9E0FF">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/plus-jakarta-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plus-jakarta-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/system.css">
+<link rel="stylesheet" href="/assets/ui/cards.css">
+<link rel="stylesheet" href="/assets/motion/motion.css">
+<link rel="stylesheet" href="/assets/layout/layout.css">
+<link rel="stylesheet" href="/assets/icons/icon.css">
 <style>
-body{margin: 0}
-html{scroll-behavior:smooth}
-a{color:#2444B0}a:hover{color:#1B3590}
-img,svg{max-width: 100%}
-[id]{scroll-margin-top:24px}
-summary::-webkit-details-marker{display:none}
-details[open]>summary svg{transform:rotate(45deg)}
-summary svg{transition:transform .15s}
-.lv-dd{position:relative}
-.lv-dd-menu{display:none;position:absolute;top: 100%;left: -11.5px;z-index:50;min-width: 189.5px;margin: 0;padding: 6px;list-style:none;background:#FFFFFF;border:1.5px solid #14162B;border-radius: 10.5px;box-shadow:0 12px 28px rgba(20,22,43,.12)}
-.lv-dd.open .lv-dd-menu{display:block}
-@media (hover:hover){.lv-dd:hover .lv-dd-menu{display:block}}
-.lv-dd-menu a{display:flex;align-items:center;min-height: 32px;padding: 0 9px;border-radius: 6px;font-size: 11.5px;font-weight:500;color:#14162B;text-decoration:none}
-.lv-dd-menu a:hover,.lv-dd-menu a:focus-visible{background:#F2F4FF;color:#14162B}
-.lv-dd-menu a:focus-visible{outline-offset:-3px}
-.lv-dd-btn svg{transition:transform .15s}
-.lv-dd.open .lv-dd-btn svg{transform:rotate(180deg)}
+/* LAVERTT, grafica v2 (kit tasteskill). Colori e caratteri del marchio: blu #2444B0, lilla #D9E0FF,
+   inchiostro #14162B, azzurro chiaro #F2F4FF; Plus Jakarta Sans per i titoli, Inter per i testi.
+   Qui solo i token e quello che sta dentro le illustrazioni (finestre, documenti, chat). */
+
 @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-latin-400-normal.woff2) format('woff2')}
 @font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/inter-latin-600-normal.woff2) format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/caveat-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Caveat';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/caveat-latin-600-normal.woff2) format('woff2')}
-.lv-legal{max-width: 554px;margin: 0 auto;padding: 52.5px 17.5px 75.5px;box-sizing:border-box;font-size: 12.5px;line-height:1.7;color:#3D4054}
-.lv-legal h2{margin: 34.5px 0 10.5px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 19px;font-weight:600;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
-.lv-legal h2:first-child{margin-top: 0}
-.lv-legal h3{margin: 20.5px 0 7px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 14.5px;font-weight:600;color:#14162B}
-.lv-legal p{margin: 0 0 10.5px}
-.lv-legal ul{margin: 0 0 11.5px;padding-left: 16px}
-.lv-legal li{margin: 0 0 6px}
-.lv-legal strong{color:#14162B;font-weight:600}
-.lv-legal a{color:#2444B0;font-weight:500;text-underline-offset:3px}
-.lv-legal .lv-table{overflow-x:auto;margin: 4.5px 0 14.5px;border:1px solid #E2E5F0;border-radius: 10.5px}
-.lv-legal table{width: 100%;min-width: 408px;border-collapse:collapse;font-size: 11.5px;line-height:1.5}
-.lv-legal th{text-align:left;font-weight:600;color:#14162B;background:#F2F4FF;padding: 9px 10.5px;border-bottom:1px solid #E2E5F0}
-.lv-legal td{padding: 9px 10.5px;border-bottom:1px solid #E2E5F0;vertical-align:top}
-.lv-legal tr:last-child td{border-bottom:none}
-.lv-legal .lv-note{background:#F2F4FF;border-radius: 11.5px;padding: 13px 14.5px;margin: 0 0 14.5px;color:#14162B}
-.js .lv-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-.js .lv-reveal.lv-in{opacity:1;transform:none}
-a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #2444B0;outline-offset:3px}
-.lv-skip{position:absolute;left:12px;top:-80px;z-index:1100;padding:12px 18px;border-radius:999px;background:#14162B;color:#FFFFFF;font-family:'Inter',system-ui,sans-serif;font-size:14px;font-weight:600;text-decoration:none}
-.lv-skip:focus,.lv-skip:hover{top:12px;color:#FFFFFF}
-#contenuto:focus{outline:none}
-a,button{transition:transform .2s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease}
-a:hover{transform:translateY(-1px)}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .lv-reveal{opacity:1;transform:none}a:hover{transform:none}}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
+
+:root {
+  --p-bg: #ffffff; --p-surface: #f2f4ff; --p-ink: #14162b; --p-muted: #5f6275;
+  --p-accent: #2444b0; --p-accent-ink: #ffffff; --p-action: #2444b0; --p-action-ink: #ffffff;
+  --p-inv-bg: #14162b; --p-inv-surface: #212338; --p-inv-ink: #ffffff; --p-inv-muted: #9c9ea8;
+  --p-inv-accent: #ffffff; --p-inv-accent-ink: #14162b; --p-inv-action: #ffffff; --p-inv-action-ink: #14162b;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-text: "Inter", system-ui, sans-serif;
+  --display-weight: 500;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+  --ly-scale: 0.86;
+  /* il lilla del marchio: lo sfondo delle illustrazioni */
+  --lv-tint: #d9e0ff;
+  --lv-chip: #1b3590;
+}
+
+.nav__logo img { display: block; height: 30px; width: auto; }
+.footer .nav__logo img { height: 34px; }
+.lv-wa { display: inline-flex; align-items: center; gap: var(--s-2); }
+.lv-wa img { width: 20px; height: 20px; flex: none; }
+
+/* ---------- illustrazioni: fondo lilla, finestre bianche ---------- */
+.lv-tint { background: var(--lv-tint) !important; }
+.lv-win {
+  background: #fff; border: 1px solid rgba(20, 22, 43, .14); border-radius: 16px; overflow: hidden;
+  color: var(--p-ink); font-family: var(--font-text); text-align: left;
+}
+.lv-win__bar { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid rgba(20, 22, 43, .1); font-size: 13px; color: var(--p-muted); }
+.lv-win__bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(20, 22, 43, .14); }
+.lv-win__bar span { margin-left: 8px; }
+.lv-win__body { padding: 22px 24px 24px; display: grid; gap: 14px; }
+.lv-kick { margin: 0; font-size: 13px; font-weight: 500; color: var(--p-muted); }
+.lv-title { margin: 0; font: 500 22px/1.2 var(--font-display); letter-spacing: -0.02em; }
+.lv-chip { display: inline-flex; align-items: center; min-height: 26px; padding: 0 10px; border-radius: 999px; font-size: 13px; font-weight: 500; white-space: nowrap; background: var(--lv-tint); color: var(--lv-chip); }
+.lv-chip--off { background: #eef0f4; color: #4a4d5e; }
+.lv-btn { display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 10px; background: var(--p-action); color: #fff; font-size: 15px; font-weight: 500; }
+.lv-bar { display: block; height: 8px; border-radius: 4px; background: #e2e5f0; }
+.lv-bar--ink { background: var(--p-ink); height: 10px; }
+.lv-bar--blue { background: var(--p-accent); height: 8px; }
+
+/* la valutazione (hero) */
+.lv-stage { position: absolute; inset: 0; }
+.lv-eval { position: absolute; top: 48px; right: 48px; left: 48px; max-width: 520px; margin-left: auto; }
+.lv-eval__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.lv-eval__list li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid rgba(20, 22, 43, .1); border-radius: 12px; font-size: 15px; font-weight: 500; }
+.lv-eval__list small { display: block; margin-top: 2px; font-size: 13px; font-weight: 400; color: var(--p-muted); }
+.lv-eval__list b { font-weight: 500; font-variant-numeric: tabular-nums; }
+.lv-eval__list .is-off { color: #4a4d5e; }
+.lv-eval__total { display: flex; justify-content: space-between; padding-top: 4px; font-size: 15px; }
+.lv-eval__total b { font: 500 22px/1 var(--font-display); }
+.hero__media .ly-float { width: min(320px, calc(100% - 48px)); }
+.hero__media .ly-float__title { line-height: 1.4; }
+@media (max-width: 1023px) {
+  .lv-eval { top: 32px; left: 32px; right: 32px; max-width: 520px; margin-inline: auto; }
+  .hero__media .ly-float { display: none; }
+  .lv-stage { -webkit-mask: linear-gradient(to bottom, #000 calc(100% - 64px), transparent calc(100% - 4px)); mask: linear-gradient(to bottom, #000 calc(100% - 64px), transparent calc(100% - 4px)); }
+}
+@media (max-width: 639px) {
+  .lv-eval { top: 20px; left: 20px; right: 20px; }
+  .lv-eval .lv-win__body { padding: 16px; gap: 10px; }
+  .lv-eval__list li { grid-template-columns: minmax(0, 1fr) auto; row-gap: 6px; }
+  .lv-eval__list li > .lv-chip { grid-column: 1; justify-self: start; }
+  .lv-eval__list small { display: none; }
+}
+
+/* elenco servizi con anteprima */
+#servizi .rows__name { font-weight: 500; font-size: var(--t-lead); text-decoration: none; color: var(--ink); }
+#servizi .rows > li { cursor: default; }
+#servizi .rows__value { font-variant-numeric: tabular-nums; font-weight: 500; }
+.lv-peek { position: relative; overflow: hidden; border-radius: var(--r-lg); min-height: 420px; }
+.lv-peek > [data-peek-for] { position: absolute; inset: 48px 48px auto 48px; }
+.lv-peek > [hidden] { display: none; }
+@media (max-width: 1023px) {
+  .lv-peek { min-height: 0; height: 200px; margin-top: var(--s-5); }
+  .lv-peek > [data-peek-for] { inset: 24px 24px auto 24px; }
+}
+@media (max-width: 639px) {
+  .lv-peek { height: 340px; }
+  #servizi .rows__name { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* documenti e schermate nelle anteprime */
+.lv-doc { display: grid; gap: 12px; }
+.lv-doc__head { display: flex; align-items: center; gap: 14px; }
+.lv-doc__av { width: 52px; height: 52px; border-radius: 50%; background: var(--lv-tint); flex: none; }
+.lv-doc__lines { flex: 1; display: grid; gap: 8px; }
+.lv-doc h4 { margin: 8px 0 0; font: 500 13px/1.3 var(--font-text); color: var(--p-accent); }
+.lv-doc p { margin: 0; font-size: 14px; line-height: 1.5; }
+.lv-li__banner { height: 72px; margin: -22px -24px 0; background: #c9d2fb; }
+.lv-li__av { width: 76px; height: 76px; margin-top: -52px; border-radius: 50%; border: 4px solid #fff; background: var(--lv-tint); }
+.lv-li__top { display: flex; justify-content: space-between; align-items: flex-start; }
+.lv-li__top img { width: 28px; height: 28px; margin-top: 8px; }
+.lv-msg { max-width: 88%; padding: 10px 12px; border-radius: 12px 12px 12px 4px; background: #f2f4ff; font-size: 14px; line-height: 1.5; }
+.lv-msg--me { justify-self: end; border-radius: 12px 12px 4px 12px; background: var(--p-accent); color: #fff; }
+.lv-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.lv-call { display: grid; grid-template-columns: 1.6fr 1fr; gap: 10px; }
+.lv-call__tile { aspect-ratio: 4 / 3; border-radius: 12px; background: #2a2d45; display: grid; place-items: center; }
+.lv-call__tile span { width: 44%; aspect-ratio: 1; border-radius: 50%; background: #4a4e6c; }
+.lv-call__tile--me { background: #3a3e5c; }
+.lv-call__tile--me span { width: 40%; }
+.lv-call__bar { display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+.lv-co { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(20, 22, 43, .08); }
+.lv-co:last-child { border-bottom: 0; }
+.lv-co i { width: 28px; height: 28px; border-radius: 8px; background: var(--lv-tint); }
+
+/* come funziona: le schermate dei tre passi */
+#come-funziona .mo-pc__visual { margin: 0; }
+#come-funziona:not(.is-live) .lv-step { min-height: 0; height: 18svh; }
+#come-funziona:not(.is-live) .lv-step > .lv-win { top: 24px; left: 24px; right: 24px; }
+@media (max-width: 639px) {
+  #come-funziona:not(.is-live) .lv-step { height: 34svh; }
+  main > #come-funziona[data-moment]:not(.is-live) { min-height: calc(2 * 100lvh); }
+}
+.lv-step { position: relative; width: 100%; height: 100%; min-height: 300px; border-radius: var(--r-lg); overflow: hidden; }
+.lv-step > .lv-win { position: absolute; top: 48px; left: 48px; right: 48px; }
+.lv-quiz__prog { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.lv-quiz__prog span { height: 6px; border-radius: 3px; background: #e2e5f0; }
+.lv-quiz__prog .on { background: var(--p-accent); }
+.lv-opt { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid rgba(20, 22, 43, .14); border-radius: 12px; font-size: 15px; }
+.lv-opt i { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid rgba(20, 22, 43, .35); flex: none; }
+.lv-opt.on { border-color: var(--p-accent); background: #f2f4ff; }
+.lv-opt.on i { border: 5px solid var(--p-accent); }
+.lv-file { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--p-muted); }
+.lv-file b { font-weight: 500; color: var(--p-ink); }
+.lv-note { display: grid; grid-template-columns: minmax(0, 1fr) 46%; gap: 14px; align-items: start; }
+.lv-note__c { padding: 2px 0 2px 10px; border-left: 3px solid var(--p-accent); color: var(--p-ink); font-size: 13px; line-height: 1.4; }
+.lv-wa-head { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: #f0f2f5; border-bottom: 1px solid rgba(20, 22, 43, .08); font-size: 15px; font-weight: 500; }
+.lv-wa-head img { width: 26px; height: 26px; }
+.lv-wa-head small { display: block; font-size: 12.5px; font-weight: 400; color: var(--p-muted); }
+.lv-chat { padding: 18px 16px; display: grid; gap: 10px; background: #efeae2; }
+.lv-chat .lv-msg { background: #fff; }
+.lv-chat .lv-msg--me { background: var(--lv-tint); color: var(--p-ink); }
+.lv-cart { display: grid; gap: 4px; padding: 10px 12px; border-radius: 10px; background: #f2f4ff; font-size: 13.5px; }
+.lv-cart b { font-weight: 500; font-size: 14.5px; }
+
+/* dalle tue parole al CV */
+.lv-said { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-6); }
+.lv-said li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: var(--s-4); align-items: start; }
+.lv-said p { margin: 0; font: 500 34px/1.12 'Caveat', cursive; color: var(--p-accent); }  /* la scrittura a mano del marchio: le parole della persona */
+.lv-num { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--lv-tint); color: var(--lv-chip); font: 500 14px/1 var(--font-text); }
+.lv-cvframe { position: relative; min-height: min(470px, 52svh); border-radius: var(--r-lg); overflow: hidden; }
+.lv-cvframe > .lv-win { position: absolute; top: 48px; left: 48px; right: 48px; }
+.lv-cvitem { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 14px; align-items: start; padding: 12px 0; border-top: 1px solid rgba(20, 22, 43, .08); }
+.lv-cvitem p { font-size: 15px; line-height: 1.5; color: #3d4054; }
+.lv-cvitem b { display: block; color: var(--p-ink); font-weight: 500; }
+@media (max-width: 1023px) { .lv-cvframe { min-height: 0; height: 400px; margin-top: var(--s-6); } .lv-cvframe > .lv-win { top: 24px; left: 24px; right: 24px; } }
+@media (max-width: 639px) { .lv-said p { font-size: 30px; } .lv-cvframe { height: 620px; } }
+.lv-pairs { list-style: none; margin: 0; padding: 0; }
+.lv-pairs li { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s-5); padding: var(--s-5) 0; border-bottom: 1px solid var(--line); align-items: start; }
+.lv-pairs li:first-child { padding-top: 0; }
+.lv-pairs__said { grid-column: 1 / span 5; margin: 0; font: 500 32px/1.15 'Caveat', cursive; color: var(--p-accent); }  /* la scrittura a mano del marchio: le parole della persona */
+.lv-pairs__cv { grid-column: 7 / span 6; margin: 0; padding: var(--s-4) var(--s-5); border-radius: var(--r-md); background: #fff; border: 1px solid var(--line); }
+.lv-pairs__cv b { display: block; font-weight: 500; }
+.lv-pairs__cv span { color: #3d4054; }
+.lv-pairs__head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s-5); margin-bottom: var(--s-4); }
+.lv-pairs__head p { margin: 0; }
+.lv-pairs__head p:first-child { grid-column: 1 / span 5; }
+.lv-pairs__head p:last-child { grid-column: 7 / span 6; }
+@media (max-width: 639px) {
+  .lv-pairs li, .lv-pairs__head { grid-template-columns: 1fr; gap: var(--s-3); }
+  .lv-pairs__said, .lv-pairs__cv { grid-column: 1; }
+  .lv-pairs__head { display: none; }
+}
+
+/* domande in due colonne */
+.lv-faq2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--s-5); }
+@media (max-width: 639px) { .lv-faq2 { grid-template-columns: 1fr; } .lv-faq2 > .faq + .faq > :first-child { padding-top: var(--s-5); } }
+
+/* il footer: i link legali a destra */
+.lv-legal { display: inline-flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); }
+@media (max-width: 639px) { .lv-legal { flex: 1 0 100%; flex-direction: column; align-items: flex-start; gap: 0; } }
+.lv-ask { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-4); margin: var(--s-7) 0 0; }
+.lv-ask img { width: 32px; height: 32px; flex: none; }
+.lv-ask .lv-wa { gap: var(--s-3); }
+/* pulsante per riaprire le scelte sui cookie, nel footer */
+.footer .lv-ck-open { font: inherit; color: inherit; }
+
 .lv-ck{position:fixed;inset:0;z-index:1000;display:flex;align-items:flex-end;justify-content:center;font-family:'Inter',system-ui,sans-serif;color:#14162B}
 .lv-ck[hidden]{display:none}
 .lv-ck-lock,.lv-ck-lock body{overflow:hidden}
@@ -78,7 +224,8 @@ a:hover{transform:translateY(-1px)}
 .lv-ck-box a{color:#2444B0;font-weight:500;text-underline-offset:3px}
 .lv-ck-x{position:absolute;top:16px;right:14px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;padding:0;border:none;border-radius:50%;background:transparent;color:#14162B;cursor:pointer}
 .lv-ck-x:hover{background:#F2F4FF}
-.lv-ck-box:focus{outline:none}
+.lv-ck-box:focus:not(:focus-visible){outline:none}
+.lv-ck-box:focus-visible{outline:3px solid #2444B0;outline-offset:3px}
 .lv-ck-preview{display:inline-block;margin:0 0 12px!important;padding:4px 10px;border-radius:999px;background:#FFF4D6;color:#5C4400!important;font-size:12px!important;font-weight:600}
 .lv-ck-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
 .lv-ck-actions-one{grid-template-columns:1fr}
@@ -100,324 +247,349 @@ a:hover{transform:translateY(-1px)}
 .lv-ck-open[hidden]{display:none}
 .lv-ck-open:hover{color:#2444B0}
 </style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="/assets/moments/moments.js">
+<link rel="modulepreload" href="/assets/moments/lib.js">
+<link rel="modulepreload" href="/assets/moments/word-highlight/moment.js">
+<link rel="modulepreload" href="/assets/moments/pinned-chapters/moment.js">
 </head>
 <body>
-<a class="lv-skip" href="#contenuto">Salta al contenuto</a>
-<div style="font-family: 'Inter', system-ui, sans-serif; color: #14162B; background: #FFFFFF; min-width: 0; -webkit-font-smoothing: antialiased;">
-
-<div style="background: #D9E0FF;">
-<header style="font-family: 'Inter', system-ui, sans-serif; color: #14162B; max-width: 904px; margin: 0 auto; padding: 11.5px 17.5px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26.5px;">
-<a href="/" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none;"><img src="/logo.svg" alt="LAVERTT" style="height: 28px; width: auto; display: block;"></a>
-<nav aria-label="Principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 20.5px; flex: 1 1 auto;">
-<div class="lv-dd">
-<button type="button" class="lv-dd-btn" aria-haspopup="true" aria-expanded="false" aria-controls="lv-menu-servizi" style="display: inline-flex; align-items: center; gap: 4.5px; background: none; border: none; padding: 9px 0; font: inherit; font-size: 11.5px; font-weight: 500; color: #14162B; cursor: pointer;">Servizi <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></button>
-<ul id="lv-menu-servizi" class="lv-dd-menu">
-<li><a href="/creazione-cv">Creazione CV</a></li>
-<li><a href="/ottimizzazione-linkedin">Ottimizzazione LinkedIn</a></li>
-<li><a href="/lettera-presentazione">Lettera di presentazione</a></li>
-<li><a href="/messaggi-recruiter">Messaggi per recruiter</a></li>
-<li><a href="/preparazione-colloquio">Preparazione colloquio</a></li>
-<li><a href="/mappatura-aziende">Mappatura aziende</a></li>
-</ul>
-</div>
-<a href="/come-funziona#prezzi" style="font-size: 11.5px; font-weight: 500; color: #14162B; text-decoration: none; padding: 9px 0;">Prezzi</a>
-<a href="/chi-siamo" style="font-size: 11.5px; font-weight: 500; color: #14162B; text-decoration: none; padding: 9px 0;">Chi siamo</a>
-</nav>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 7px 13px;"><a href="https://www.lavertt.app/" style="display: inline-flex; align-items: center; min-height: 32px; padding: 0px 13px; border-radius: 7px; background: rgb(36, 68, 176); color: rgb(255, 255, 255); font-size: 11.5px; font-weight: 600; text-decoration: none">Inizia il questionario</a><a href="https://wa.me/393780950535" style="display: inline-flex; align-items: center; gap: 7px; min-height: 32px; padding: 0px 13px; border-radius: 7px; border: 1.5px solid rgb(20, 22, 43); color: rgb(20, 22, 43); font-size: 11.5px; font-weight: 600; text-decoration: none; box-sizing: border-box"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg>Invia il CV su WhatsApp</a></div>
+<!-- type: service
+     deal: hero split, nav nav-mega, close close-type, footer footer-columns, rhythm surface-pairs, buttons arrow, mark: il logo LAVERTT
+     moments: word-highlight (#metodo), pinned-chapters (#come-funziona)
+     colori e caratteri: quelli del marchio (richiesta della cliente), non quelli distribuiti dal kit -->
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Salta al contenuto</a>
+    <a class="nav__logo" href="/"><img src="/logo.svg" alt="LAVERTT" width="102" height="30"></a>
+    <nav class="nav__links" aria-label="Principale">
+      <div class="nav__item">
+        <a class="nav__link" href="/#servizi">Servizi <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <div class="menu-col span-3">
+              <p class="t-label">Per candidarti</p>
+              <a href="/creazione-cv">Creazione CV<span>Scritto da capo, 39 €</span></a>
+              <a href="/lettera-presentazione">Lettera di presentazione<span>Su misura per ruolo e azienda</span></a>
+              <a href="/mappatura-aziende">Mappatura aziende<span>20 aziende nelle tue zone</span></a>
+            </div>
+            <div class="menu-col span-3">
+              <p class="t-label">Per farti trovare</p>
+              <a href="/ottimizzazione-linkedin">Ottimizzazione LinkedIn<span>Profilo riscritto per i recruiter</span></a>
+              <a href="/messaggi-recruiter">Messaggi per recruiter<span>Tre messaggi e la strategia</span></a>
+              <a href="/preparazione-colloquio">Preparazione colloquio<span>60 minuti in videochiamata</span></a>
+            </div>
+            <a class="menu-card span-3 start-10" href="/come-funziona">
+              <div class="panel lv-tint" role="img" aria-label="I tre passi: questionario, valutazione, proposta su WhatsApp">
+                <div class="lv-win" style="position:absolute;inset:20px 24px auto 24px" aria-hidden="true">
+                  <div class="lv-win__body" style="padding:14px 16px;gap:8px">
+                    <div class="lv-quiz__prog"><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+                    <span class="lv-chip">Valutazione pronta</span>
+                  </div>
+                </div>
+              </div>
+              <span class="t-card">Come funziona</span>
+              <span class="t-small muted">Questionario, valutazione, proposta su WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="/come-funziona">Come funziona</a></div>
+      <div class="nav__item"><a class="nav__link" href="/come-funziona#prezzi">Prezzi</a></div>
+      <div class="nav__item"><a class="nav__link" href="/chi-siamo">Chi siamo</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__link" href="https://wa.me/393780950535">WhatsApp</a>
+      <a class="btn btn--primary" href="https://www.lavertt.app/">Inizia il questionario</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
 </header>
 
-</div>
-<main id="contenuto" tabindex="-1">
-<div style="background: #D9E0FF; border-radius: 0 0 34.5px 34.5px;">
-<section style="padding: 34.5px 17.5px 70px;">
-<div style="max-width: 860.5px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 41px 47px;">
 
-<div style="flex: 1 1 350px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<main id="top">
+  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>Scritto da persone, non dall'AI</p>
+        <h1 id="hero-h">CV, LinkedIn e colloqui per chi cerca lavoro</h1>
+        <p class="hero__lead">Compili il questionario e una persona legge il tuo CV: entro 2 giorni lavorativi ti scrive su WhatsApp cosa ti serve. Valutazione gratuita, CV a 39 €.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="https://www.lavertt.app/">Inizia il questionario<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary" href="https://wa.me/393780950535">Invia il CV su WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero__media span-6 start-7 lv-tint" role="img" aria-label="Una valutazione LAVERTT: consigliati la Creazione CV e l'Ottimizzazione LinkedIn, per ora non servono la preparazione al colloquio e la lettera">
+        <div class="lv-stage" aria-hidden="true"><div class="lv-win lv-eval">
+          <div class="lv-win__bar"><i></i><i></i><i></i><span>La tua valutazione</span></div>
+          <div class="lv-win__body">
+            <p class="lv-title">Cosa ti serve adesso</p>
+            <ul class="lv-eval__list">
+              <li><span>Creazione CV<small>Da rifare: mansioni senza risultati</small></span><b>39 €</b><span class="lv-chip">Consigliato</span></li>
+              <li><span>Ottimizzazione LinkedIn<small>Titolo e informazioni vuoti</small></span><b>79 €</b><span class="lv-chip">Consigliato</span></li>
+              <li class="is-off"><span>Preparazione colloquio<small>Prima arrivano i colloqui</small></span><b>39 €</b><span class="lv-chip lv-chip--off">Non serve ora</span></li>
+              <li class="is-off"><span>Lettera di presentazione<small>Quando ti candidi a un'azienda</small></span><b>25 €</b><span class="lv-chip lv-chip--off">Non serve ora</span></li>
+            </ul>
+            <div class="lv-eval__total"><span>Totale</span><b>118 €</b></div>
+            <span class="lv-btn">Vai al carrello</span>
+          </div>
+        </div></div>
+        <div class="ly-float" aria-hidden="true">
+          <div class="ly-float__row"><span class="lv-wa"><img src="/assets/icons/whatsapp.svg" alt="" width="20" height="20">LAVERTT</span><span>su WhatsApp</span></div>
+          <div class="ly-float__title">Ti servono il CV e LinkedIn. Il resto può aspettare.</div>
+        </div>
+      </div>
+    </div></div>
+  </section>
 
-<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 25px; padding: 0 10.5px 0 4.5px; border-radius: 728px; background: #14162B; color: #FFFFFF; font-size: 11.5px; font-weight: 600;"><span style="width: 17.5px; height: 17.5px; border-radius: 50%; background: #D9E0FF; color: #2444B0; display: inline-flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span>Fatto da persone, non da AI</span>
-<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(31px, 3.8vw, 51px); font-weight: 600; line-height: 1.06; letter-spacing: -0.025em; color: #14162B; max-width: 437.5px;">Inizia il tuo percorso verso il lavoro.</h1>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #14162B; max-width: 379px;">La ricerca del lavoro è un percorso di esplorazione, crescita e cambiamento. LAVERTT ti accompagna in questa fase, aiutandoti a comprendere meglio le tue scelte e motivazioni, le tue aspettative e incertezze.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 9px; margin-top: 4.5px;">
-<a href="https://www.lavertt.app/" style="display: inline-flex; align-items: center; gap: 7px; min-height: 39px; padding: 0 19px; border-radius: 9px; background: #2444B0; color: #FFFFFF; font-size: 12.5px; font-weight: 600; text-decoration: none;">Entra in LAVERTT <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-<a href="/come-funziona" style="display: inline-flex; align-items: center; min-height: 39px; padding: 0 19px; border-radius: 9px; border: 1.5px solid #14162B; color: #14162B; font-size: 12.5px; font-weight: 600; text-decoration: none; box-sizing: border-box;">Come funziona</a>
-</div>
-<p style="margin: 0; font-size: 11.5px; color: #3D4054;">Valutazione iniziale gratuita · CV a 39€ · Tutto online, in tutta Italia</p>
-</div>
+  <section class="section" id="servizi" style="--hm: 2" aria-labelledby="servizi-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="servizi-h">Servizi e prezzi</h2>
+      </div>
+      <div class="grid grid--top fill" data-peek>
+        <ul class="rows span-6">
+          <li data-peek-to="cv"><a class="rows__name" href="/creazione-cv">Creazione CV</a><p>Scritto da capo, in 5 giorni lavorativi</p><span class="rows__value">39 €</span></li>
+          <li data-peek-to="linkedin"><a class="rows__name" href="/ottimizzazione-linkedin">Ottimizzazione LinkedIn</a><p>Profilo riscritto, in 7 giorni lavorativi</p><span class="rows__value">79 €</span></li>
+          <li data-peek-to="lettera"><a class="rows__name" href="/lettera-presentazione">Lettera di presentazione</a><p>Su misura per ruolo e azienda, in 3 giorni</p><span class="rows__value">25 €</span></li>
+          <li data-peek-to="messaggi"><a class="rows__name" href="/messaggi-recruiter">Messaggi per recruiter</a><p>Tre messaggi da mandare a chi seleziona</p><span class="rows__value">29 €</span></li>
+          <li data-peek-to="colloquio"><a class="rows__name" href="/preparazione-colloquio">Preparazione colloquio</a><p>Prova di 60 minuti in videochiamata</p><span class="rows__value">39 €</span></li>
+          <li data-peek-to="aziende"><a class="rows__name" href="/mappatura-aziende">Mappatura aziende</a><p>20 aziende nelle zone che scegli</p><span class="rows__value">50 €</span></li>
+        </ul>
+        <div class="frame frame--fill span-6 start-7 lv-tint lv-peek">
+          <div class="lv-win" data-peek-for="cv" role="img" aria-label="Un CV scritto da LAVERTT">
+            <div class="lv-win__body lv-doc">
+              <div class="lv-doc__head"><span class="lv-doc__av"></span><span class="lv-doc__lines"><span class="lv-bar lv-bar--ink" style="width:58%"></span><span class="lv-bar" style="width:40%"></span></span></div>
+              <h4>Profilo</h4>
+              <span class="lv-bar" style="width:96%"></span><span class="lv-bar" style="width:82%"></span>
+              <h4>Esperienze</h4>
+              <p><b>Addetto magazzino</b> · ricevimento merci, inventario settimanale e preparazione degli ordini.</p>
+              <p><b>Cameriera di sala</b>, stagioni 2022–2024 · servizio ai tavoli, gestione della cassa e chiusura serale.</p>
+              <h4>Competenze</h4>
+              <span class="lv-bar" style="width:70%"></span><span class="lv-bar" style="width:54%"></span>
+              <h4>Lingue</h4>
+              <span class="lv-bar" style="width:38%"></span>
+            </div>
+          </div>
+          <div class="lv-win" data-peek-for="linkedin" role="img" aria-label="Un profilo LinkedIn riscritto" hidden>
+            <div class="lv-win__body">
+              <div class="lv-li__banner"></div>
+              <div class="lv-li__top"><span class="lv-li__av"></span><img src="/assets/icons/linkedin.svg" alt="" width="28" height="28" loading="lazy"></div>
+              <p class="lv-title">Addetta alle vendite</p>
+              <p class="lv-kick">Vendita al banco, ordini e rapporti con i fornitori</p>
+              <span class="lv-chip">Disponibile a lavorare</span>
+              <p class="lv-kick" style="color:var(--p-ink);margin-top:8px">Informazioni</p>
+              <span class="lv-bar" style="width:94%"></span><span class="lv-bar" style="width:88%"></span><span class="lv-bar" style="width:62%"></span>
+              <p class="lv-kick" style="color:var(--p-ink);margin-top:8px">Esperienza</p>
+              <span class="lv-bar" style="width:80%"></span><span class="lv-bar" style="width:52%"></span>
+            </div>
+          </div>
+          <div class="lv-win" data-peek-for="lettera" role="img" aria-label="Una lettera di presentazione" hidden>
+            <div class="lv-win__body lv-doc">
+              <span class="lv-bar" style="width:34%;justify-self:end"></span>
+              <p>Gentile responsabile della selezione,</p>
+              <span class="lv-bar" style="width:98%"></span><span class="lv-bar" style="width:94%"></span><span class="lv-bar" style="width:72%"></span>
+              <span class="lv-bar" style="width:96%;margin-top:8px"></span><span class="lv-bar" style="width:90%"></span><span class="lv-bar" style="width:84%"></span><span class="lv-bar" style="width:46%"></span>
+              <span class="lv-bar" style="width:92%;margin-top:8px"></span><span class="lv-bar" style="width:60%"></span>
+              <p style="margin-top:8px">Cordiali saluti</p>
+              <span class="lv-bar lv-bar--ink" style="width:30%"></span>
+            </div>
+          </div>
+          <div class="lv-win" data-peek-for="messaggi" role="img" aria-label="Un messaggio a chi seleziona" hidden>
+            <div class="lv-win__body">
+              <div class="lv-tabs"><span class="lv-chip">Primo contatto</span><span class="lv-chip lv-chip--off">Candidatura</span><span class="lv-chip lv-chip--off">Follow-up</span></div>
+              <div class="lv-msg lv-msg--me">Buongiorno, ho letto che cercate un addetto magazzino. Ho tre anni di ricevimento merci e inventari: le lascio qui il mio profilo.</div>
+              <div class="lv-msg">Grazie, mi mandi pure il CV.</div>
+              <span class="lv-bar" style="width:46%;margin-top:6px"></span><span class="lv-bar" style="width:70%"></span>
+            </div>
+          </div>
+          <div class="lv-win" data-peek-for="colloquio" role="img" aria-label="Un colloquio di prova in videochiamata" hidden>
+            <div class="lv-win__body">
+              <div class="lv-call"><span class="lv-call__tile"><span></span></span><span class="lv-call__tile lv-call__tile--me"><span></span></span></div>
+              <div class="lv-call__bar"><span>Colloquio di prova</span><span class="lv-chip">60 minuti</span></div>
+              <div class="lv-tabs"><span class="lv-chip lv-chip--off">Risposte</span><span class="lv-chip lv-chip--off">Tono</span><span class="lv-chip lv-chip--off">Linguaggio del corpo</span></div>
+            </div>
+          </div>
+          <div class="lv-win" data-peek-for="aziende" role="img" aria-label="Un elenco di aziende adatte al profilo" hidden>
+            <div class="lv-win__body" style="gap:0">
+              <p class="lv-title" style="margin-bottom:10px">20 aziende per te</p>
+              <div class="lv-co"><i></i><span class="lv-bar" style="width:62%"></span><span class="lv-chip">Sito aziendale</span></div>
+              <div class="lv-co"><i></i><span class="lv-bar" style="width:48%"></span><span class="lv-chip">LinkedIn</span></div>
+              <div class="lv-co"><i></i><span class="lv-bar" style="width:70%"></span><span class="lv-chip">Candidatura spontanea</span></div>
+              <div class="lv-co"><i></i><span class="lv-bar" style="width:54%"></span><span class="lv-chip">Sito aziendale</span></div>
+              <div class="lv-co"><i></i><span class="lv-bar" style="width:44%"></span><span class="lv-chip">Email</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div aria-hidden="true" style="flex: 1 1 291.5px; min-width: 0; position: relative; height: 321px; max-width: 364.5px;">
-<div style="position: absolute; left: 7%; top: 32px; width: 76%; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 10.5px; overflow: hidden;">
-<div style="display: flex; gap: 4.5px; padding: 8px 10.5px; border-bottom: 1.5px solid #14162B;"><span style="width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid #14162B;"></span><span style="width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid #14162B;"></span><span style="width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid #14162B;"></span></div>
-<div style="padding: 14.5px 14.5px 16px; display: flex; flex-direction: column; gap: 10.5px;">
-<p style="margin: 0; font-size: 9.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5F6275;">La tua valutazione</p>
-<p style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; color: #14162B;">Cosa ti serve davvero</p>
-<div style="display: flex; align-items: center; justify-content: space-between; gap: 7px; padding: 9px 10.5px; border: 1px solid #E2E5F0; border-radius: 7px;"><span style="font-size: 11.5px; font-weight: 500;">Creazione CV</span><span style="font-size: 9.5px; font-weight: 600; padding: 2.5px 7px; border-radius: 728px; background: #D9E0FF; color: #1B3590;">Consigliato</span></div>
-<div style="display: flex; align-items: center; justify-content: space-between; gap: 7px; padding: 9px 10.5px; border: 1px solid #E2E5F0; border-radius: 7px;"><span style="font-size: 11.5px; font-weight: 500;">Ottimizzazione LinkedIn</span><span style="font-size: 9.5px; font-weight: 600; padding: 2.5px 7px; border-radius: 728px; background: #D9E0FF; color: #1B3590;">Consigliato</span></div>
-<div style="display: flex; align-items: center; justify-content: space-between; gap: 7px; padding: 9px 10.5px; border: 1px solid #E2E5F0; border-radius: 7px;"><span style="font-size: 11.5px; font-weight: 500;">Preparazione colloquio</span><span style="font-size: 9.5px; font-weight: 600; padding: 2.5px 7px; border-radius: 728px; background: #EEF0F4; color: #5F6275;">Non serve ora</span></div>
-</div>
-</div>
-<div style="position: absolute; right: 0; top: 0; display: flex; align-items: center; gap: 7px; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 7px; padding: 6px 10.5px 6px 6px; font-size: 10.5px; font-weight: 600; box-shadow: 0 8px 20px rgba(20, 22, 43, 0.08);"><span style="width: 20.5px; height: 20.5px; border-radius: 5.5px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 14l2 2 4-4"></path></svg></span>Valutazione gratuita</div>
-<div style="position: absolute; left: 0; bottom: 25px; display: flex; align-items: center; gap: 7px; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 7px; padding: 6px 10.5px 6px 6px; font-size: 10.5px; font-weight: 600; box-shadow: 0 8px 20px rgba(20, 22, 43, 0.08);"><span style="width: 20.5px; height: 20.5px; border-radius: 5.5px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></span>Una persona su WhatsApp</div>
-<div style="position: absolute; right: 4%; bottom: 0; display: flex; align-items: center; gap: 7px; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 7px; padding: 6px 10.5px 6px 6px; font-size: 10.5px; font-weight: 600; box-shadow: 0 8px 20px rgba(20, 22, 43, 0.08);"><span style="width: 20.5px; height: 20.5px; border-radius: 5.5px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Risposta in 2 giorni lavorativi</div>
-</div>
+  <section class="section statement" id="metodo" data-moment="word-highlight" aria-label="Il metodo">
+    <div class="wrap">
+      <p class="t-label">Il metodo</p>
+      <p class="mo-wh__text">Prima di proporti un servizio leggiamo il tuo CV e le tue risposte. Se ti serve solo il CV, ti proponiamo <strong>solo il CV</strong>, e paghi solo quello.</p>
+    </div>
+  </section>
 
-</div>
-</section>
-</div>
+  <section class="section" id="come-funziona" style="--h: 2" data-moment="pinned-chapters" aria-labelledby="come-h">
+    <div class="wrap mo-pc__grid">
+      <div class="mo-pc__text">
+        <h2 id="come-h">Come funziona la valutazione gratuita</h2>
+        <ol class="mo-pc__steps">
+          <li class="mo-pc__step">
+            <h3>Compili il questionario</h3>
+            <p>Ci dici chi sei, cosa cerchi e in che settore, e alleghi il CV se ce l'hai. Nessun pagamento richiesto.</p>
+            <figure class="mo-pc__visual"><div class="lv-step lv-tint" role="img" aria-label="Il questionario LAVERTT: la domanda da quanto tempo cerchi lavoro e il CV allegato">
+              <div class="lv-win" aria-hidden="true">
+                <div class="lv-win__body">
+                  <div class="lv-quiz__prog"><span class="on"></span><span class="on"></span><span></span><span></span></div>
+                  <p class="lv-kick">Sezione 2 di 4 · La tua ricerca</p>
+                  <p class="lv-title">Da quanto tempo cerchi lavoro?</p>
+                  <span class="lv-opt"><i></i>Meno di 3 mesi</span>
+                  <span class="lv-opt on"><i></i>Da 3 a 12 mesi</span>
+                  <span class="lv-opt"><i></i>Più di un anno</span>
+                  <span class="lv-file"><b>CV.pdf</b> allegato</span>
+                  <span class="lv-btn">Avanti</span>
+                </div>
+              </div>
+            </div></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Una persona legge il tuo CV</h3>
+            <p>Entro 2 giorni lavorativi guardiamo le risposte, il CV e, se ce lo mandi, il profilo LinkedIn.</p>
+            <figure class="mo-pc__visual"><div class="lv-step lv-tint" role="img" aria-label="Un CV con le note di chi lo ha letto">
+              <div class="lv-win" aria-hidden="true">
+                <div class="lv-win__bar"><i></i><i></i><i></i><span>CV.pdf</span></div>
+                <div class="lv-win__body lv-doc">
+                  <div class="lv-note"><span class="lv-doc__lines"><span class="lv-bar lv-bar--ink" style="width:70%"></span><span class="lv-bar" style="width:50%"></span></span><span class="lv-note__c">Manca il ruolo che cerchi</span></div>
+                  <div class="lv-note"><span class="lv-doc__lines"><span class="lv-bar lv-bar--blue" style="width:40%"></span><span class="lv-bar" style="width:96%"></span><span class="lv-bar" style="width:88%"></span><span class="lv-bar" style="width:92%"></span></span><span class="lv-note__c">Qui elenchi mansioni: scriviamo i risultati</span></div>
+                  <div class="lv-note"><span class="lv-doc__lines"><span class="lv-bar lv-bar--blue" style="width:34%"></span><span class="lv-bar" style="width:80%"></span><span class="lv-bar" style="width:66%"></span></span><span class="lv-note__c">Due pagine: ne basta una</span></div>
+                  <div class="lv-note"><span class="lv-doc__lines"><span class="lv-bar lv-bar--blue" style="width:28%"></span><span class="lv-bar" style="width:60%"></span></span><span class="lv-note__c" style="border-left-color:#1c7a43">Lingue: va bene così</span></div>
+                </div>
+              </div>
+            </div></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Ricevi la proposta su WhatsApp</h3>
+            <p>Ti scriviamo cosa ti serve e ti mandiamo il link al carrello con solo quei servizi. Paghi dopo la conferma.</p>
+            <figure class="mo-pc__visual"><div class="lv-step lv-tint" role="img" aria-label="La proposta di LAVERTT su WhatsApp con il link al carrello">
+              <div class="lv-win" aria-hidden="true">
+                <div class="lv-wa-head"><img src="/assets/icons/whatsapp.svg" alt="" width="26" height="26" loading="lazy"><span>LAVERTT<small>Una persona, non un bot</small></span></div>
+                <div class="lv-chat">
+                  <div class="lv-msg">Ho letto il tuo CV e le risposte. Ti servono il CV nuovo e il profilo LinkedIn; il colloquio lo prepariamo quando arriva.</div>
+                  <div class="lv-msg"><span class="lv-cart"><b>Il tuo carrello</b>Creazione CV · Ottimizzazione LinkedIn<span>118 €</span></span></div>
+                  <div class="lv-msg lv-msg--me">Perfetto, procedo.</div>
+                </div>
+              </div>
+            </div></figure>
+          </li>
+        </ol>
+      </div>
+      <div class="mo-pc__visuals frame"></div>
+    </div>
+  </section>
 
-<section style="padding: 41px 17.5px 0;">
-<div style="max-width: 860.5px; margin: 0 auto; border-radius: 23.5px; padding: clamp(20.5px, 4vw, 34.5px); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 23.5px 41px; background-color: #2444b0">
-<div style="flex: 1 1 335.5px; min-width: 0; display: flex; gap: 14.5px; align-items: flex-start;">
-<span style="flex: 0 0 41px; width: 41px; height: 41px; border-radius: 11.5px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span>
-<div style="display: flex; flex-direction: column; gap: 7px;">
-<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(20.5px, 2.3vw, 30px); font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; color: #FFFFFF;">Lavorato da persone, non da AI</h2>
-<p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #C9CEDD;">Ogni CV, profilo e lettera viene letto e scritto da una persona, che poi ti segue su WhatsApp. Nessun testo generato dall'intelligenza artificiale.</p>
-</div>
-</div>
-<ul style="flex: 1 1 218.5px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10.5px;">
-<li style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; color: #FFFFFF;"><span style="flex: 0 0 20.5px; width: 20.5px; height: 20.5px; border-radius: 50%; background: #2444B0; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Letto da una persona</li>
-<li style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; color: #FFFFFF;"><span style="flex: 0 0 20.5px; width: 20.5px; height: 20.5px; border-radius: 50%; background: #2444B0; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Scritto da una persona</li>
-<li style="display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; color: #FFFFFF;"><span style="flex: 0 0 20.5px; width: 20.5px; height: 20.5px; border-radius: 50%; background: #2444B0; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Nessun testo generato con l'AI</li>
-</ul>
-</div>
-</section>
+  <section class="section ground-surface" id="esempio" style="--hm: 2" aria-labelledby="esempio-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="esempio-h">Dalle tue parole al CV</h2>
+        <p>Nel questionario racconti il tuo lavoro come viene. Noi lo scriviamo come lo legge chi seleziona.</p>
+      </div>
+      <div class="grid grid--top">
+        <ol class="lv-said span-5">
+          <li><span class="lv-num" aria-hidden="true">1</span><p>“Facevo un po' di tutto in magazzino.”</p></li>
+          <li><span class="lv-num" aria-hidden="true">2</span><p>“D'estate ho fatto la cameriera per tre anni.”</p></li>
+          <li><span class="lv-num" aria-hidden="true">3</span><p>“Ho aiutato mio zio nel suo negozio.”</p></li>
+        </ol>
+        <div class="frame span-6 start-7 lv-tint lv-cvframe" role="img" aria-label="Le stesse esperienze scritte nel CV. 1: Addetto magazzino, ricevimento merci, inventario settimanale e preparazione degli ordini. 2: Cameriera di sala, stagioni 2022–2024, servizio ai tavoli, gestione della cassa e chiusura serale. 3: Addetta alle vendite nell'attività di famiglia, vendita al banco, ordini e rapporti con i fornitori.">
+          <div class="lv-win" aria-hidden="true">
+            <div class="lv-win__bar"><i></i><i></i><i></i><span>Il tuo CV</span></div>
+            <div class="lv-win__body lv-doc">
+              <h4>Esperienze</h4>
+              <div class="lv-cvitem"><span class="lv-num">1</span><p><b>Addetto magazzino</b>Ricevimento merci, inventario settimanale e preparazione degli ordini.</p></div>
+              <div class="lv-cvitem"><span class="lv-num">2</span><p><b>Cameriera di sala, stagioni 2022–2024</b>Servizio ai tavoli, gestione della cassa e chiusura serale.</p></div>
+              <div class="lv-cvitem"><span class="lv-num">3</span><p><b>Addetta alle vendite nell'attività di famiglia</b>Vendita al banco, ordini e rapporti con i fornitori.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section style="padding: 29.5px 17.5px;">
-<div style="max-width: 860.5px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 14.5px 29.5px; justify-content: space-between;">
-<div style="flex: 1 1 204.5px; display: flex; align-items: center; gap: 10.5px;"><span style="flex: 0 0 32px; height: 32px; border-radius: 9px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 14l2 2 4-4"></path></svg></span><p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #14162B;">Valutazione iniziale gratuita, risposta entro 2 giorni lavorativi</p></div>
-<div style="flex: 1 1 204.5px; display: flex; align-items: center; gap: 10.5px;"><span style="flex: 0 0 32px; height: 32px; border-radius: 9px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.9.7 3.1 2.5 3.5 5.2"></path></svg></span><p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #14162B;">Una persona vera ti segue, dall'inizio alla fine</p></div>
-<div style="flex: 1 1 204.5px; display: flex; align-items: center; gap: 10.5px;"><span style="flex: 0 0 32px; height: 32px; border-radius: 9px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span><p style="margin: 0; font-size: 12.5px; line-height: 1.45; color: #14162B;">Servizio interamente online, in tutta Italia</p></div>
-</div>
-</section>
-
-<section style="padding: 47px 17.5px;">
-<div style="max-width: 860.5px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 34.5px 52.5px;">
-<div aria-hidden="true" style="flex: 1 1 306px; min-width: 0; position: relative; height: 291.5px; max-width: 379px;">
-<div style="position: absolute; inset: 20px 30px 0 0; background: #F2F4FF; border-radius: 17.5px;"></div>
-<div style="position: absolute; left: 8%; top: 29.5px; width: 74%; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 10.5px; overflow: hidden;">
-<div style="display: flex; align-items: center; gap: 7px; padding: 9px 11.5px; border-bottom: 1.5px solid #14162B;"><span style="width: 23.5px; height: 23.5px; border-radius: 50%; background: #2444B0; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 700;">L</span><span style="display: flex; flex-direction: column;"><span style="font-size: 11.5px; font-weight: 600;">Una persona di LAVERTT</span><span style="font-size: 9.5px; color: #5F6275;">su WhatsApp</span></span></div>
-<div style="padding: 13px 11.5px; display: flex; flex-direction: column; gap: 7px;">
-<p style="margin: 0; align-self: flex-start; max-width: 86%; background: #F2F4FF; border-radius: 9px 9px 9px 2.5px; padding: 7px 9px; font-size: 10.5px; line-height: 1.5;">Ho letto il tuo CV: ecco cosa funziona, cosa non funziona e di cosa hai davvero bisogno.</p>
-<p style="margin: 0; align-self: flex-end; max-width: 80%; background: #2444B0; color: #FFFFFF; border-radius: 9px 9px 2.5px 9px; padding: 7px 9px; font-size: 10.5px; line-height: 1.5;">Quindi mi servono tutti i servizi?</p>
-<p style="margin: 0; align-self: flex-start; max-width: 86%; background: #F2F4FF; border-radius: 9px 9px 9px 2.5px; padding: 7px 9px; font-size: 10.5px; line-height: 1.5;">No: ti serve un solo servizio, non tre.</p>
-</div>
-</div>
-</div>
-<div style="flex: 1 1 306px; min-width: 0; display: flex; flex-direction: column; gap: 13px;">
-<p style="margin: 0; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2444B0;">Il nostro metodo</p>
-<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(24px, 2.5vw, 34.5px); font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; color: #2444B0;">Prima capiamo, poi proponiamo</h2>
-<p style="margin: 0; font-size: 13.5px; line-height: 1.65; color: #3D4054;">Ogni percorso inizia con una valutazione gratuita della tua situazione e del tuo CV. Ti diciamo di cosa hai davvero bisogno — anche quando la risposta è “ti serve un solo servizio, non tre”.</p>
-<a href="/come-funziona" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 4.5px; font-size: 12.5px; font-weight: 600; color: #14162B; text-decoration: underline; text-underline-offset: 5px; padding: 6px 0;">Scopri come funziona <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-</div>
-</div>
-</section>
-
-<section style="padding: 47px 17.5px;">
-<div style="max-width: 860.5px; margin: 0 auto; display: flex; flex-wrap: wrap-reverse; align-items: center; gap: 34.5px 52.5px;">
-<div style="flex: 1 1 306px; min-width: 0; display: flex; flex-direction: column; gap: 13px;">
-<p style="margin: 0; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2444B0;">Chi ti segue</p>
-<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(24px, 2.5vw, 34.5px); font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; color: #2444B0;">Una persona vera, non un software</h2>
-<p style="margin: 0; font-size: 13.5px; line-height: 1.65; color: #3D4054;">Il tuo materiale viene letto e scritto da una persona vera. Nessuna analisi automatica, nessun testo generato in serie.</p>
-<p style="margin: 0; font-size: 13.5px; line-height: 1.65; color: #3D4054;">Potrai rileggere il tuo percorso professionale, sviluppare nuovi strumenti e affrontare la ricerca con maggiore consapevolezza, con persone vere al tuo fianco, che lavorano con competenza ed empatia.</p>
-<a href="/chi-siamo" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 4.5px; font-size: 12.5px; font-weight: 600; color: #14162B; text-decoration: underline; text-underline-offset: 5px; padding: 6px 0;">Scopri chi siamo <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-</div>
-<div aria-hidden="true" style="flex: 1 1 306px; min-width: 0; position: relative; height: 291.5px; max-width: 379px;">
-<div style="position: absolute; inset: 20px 0 0 30px; background: #F2F4FF; border-radius: 17.5px;"></div>
-<div style="position: absolute; left: 24%; top: 0; width: 52%; height: 277px; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 9px; padding: 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 7px;">
-<div style="display: flex; gap: 9px; align-items: center;"><span style="width: 29.5px; height: 29.5px; border-radius: 50%; background: #D9E0FF;"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 4.5px;"><span style="display: block; width: 72%; height: 7px; border-radius: 2.5px; background: #14162B;"></span><span style="display: block; width: 46%; height: 6px; border-radius: 2.5px; background: #C9CEDD;"></span></span></div>
-<span style="display: block; height: 1px; background: #E2E5F0; margin: 4.5px 0;"></span>
-<span style="display: block; width: 36%; height: 6px; border-radius: 2.5px; background: #2444B0;"></span>
-<span style="display: block; width: 100%; height: 5.5px; border-radius: 2.5px; background: #E2E5F0;"></span>
-<span style="display: block; width: 92%; height: 5.5px; border-radius: 2.5px; background: #E2E5F0;"></span>
-<span style="display: block; width: 96%; height: 5.5px; border-radius: 2.5px; background: #E2E5F0;"></span>
-<span style="display: block; width: 70%; height: 5.5px; border-radius: 2.5px; background: #E2E5F0;"></span>
-<span style="display: block; width: 30%; height: 6px; border-radius: 2.5px; background: #2444B0; margin-top: 6px;"></span>
-<span style="display: block; width: 100%; height: 5.5px; border-radius: 2.5px; background: #E2E5F0;"></span>
-<span style="display: block; width: 86%; height: 5.5px; border-radius: 2.5px; background: #E2E5F0;"></span>
-<span style="display: block; width: 90%; height: 5.5px; border-radius: 2.5px; background: #E2E5F0;"></span>
-<span style="display: block; width: 28%; height: 6px; border-radius: 2.5px; background: #2444B0; margin-top: 6px;"></span>
-<span style="display: block; width: 94%; height: 5.5px; border-radius: 2.5px; background: #E2E5F0;"></span>
-<span style="display: block; width: 64%; height: 5.5px; border-radius: 2.5px; background: #E2E5F0;"></span>
-</div>
-<div style="position: absolute; left: 0; top: 51px; display: flex; align-items: center; gap: 7px; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 7px; padding: 6px 10.5px 6px 6px; font-size: 10.5px; font-weight: 600; box-shadow: 0 8px 20px rgba(20, 22, 43, 0.08);"><span style="width: 20.5px; height: 20.5px; border-radius: 5.5px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Struttura e ordine</div>
-<div style="position: absolute; right: 0; top: 124px; display: flex; align-items: center; gap: 7px; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 7px; padding: 6px 10.5px 6px 6px; font-size: 10.5px; font-weight: 600; box-shadow: 0 8px 20px rgba(20, 22, 43, 0.08);"><span style="width: 20.5px; height: 20.5px; border-radius: 5.5px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Compatibilità ATS</div>
-<div style="position: absolute; left: 6%; bottom: 22px; display: flex; align-items: center; gap: 7px; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 7px; padding: 6px 10.5px 6px 6px; font-size: 10.5px; font-weight: 600; box-shadow: 0 8px 20px rgba(20, 22, 43, 0.08);"><span style="width: 20.5px; height: 20.5px; border-radius: 5.5px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>Lingua e refusi</div>
-</div>
-</div>
-</section>
-
-<section style="padding: 47px 17.5px;">
-<div style="max-width: 860.5px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 34.5px 52.5px;">
-<div aria-hidden="true" style="flex: 1 1 306px; min-width: 0; position: relative; height: 291.5px; max-width: 379px;">
-<div style="position: absolute; inset: 20px 30px 0 0; background: #F2F4FF; border-radius: 17.5px;"></div>
-<div style="position: absolute; left: 8%; top: 29.5px; width: 76%; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 10.5px; overflow: hidden;">
-<div style="display: flex; gap: 4.5px; padding: 8px 10.5px; border-bottom: 1.5px solid #14162B;"><span style="width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid #14162B;"></span><span style="width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid #14162B;"></span><span style="width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid #14162B;"></span></div>
-<div style="padding: 13px 14.5px 14.5px; display: flex; flex-direction: column; gap: 9px;">
-<p style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13.5px; font-weight: 600;">Il tuo percorso</p>
-<div style="display: flex; align-items: center; gap: 9px; font-size: 11.5px;"><span style="flex: 1;">Valutazione iniziale</span><span style="font-weight: 600;">Gratis</span><span style="width: 26.5px; height: 14.5px; border-radius: 728px; background: #2444B0; position: relative;"><span style="position: absolute; right: 2.5px; top: 2.5px; width: 10.5px; height: 10.5px; border-radius: 50%; background: #FFFFFF;"></span></span></div>
-<div style="display: flex; align-items: center; gap: 9px; font-size: 11.5px;"><span style="flex: 1;">Creazione CV</span><span style="font-weight: 600;">39€</span><span style="width: 26.5px; height: 14.5px; border-radius: 728px; background: #2444B0; position: relative;"><span style="position: absolute; right: 2.5px; top: 2.5px; width: 10.5px; height: 10.5px; border-radius: 50%; background: #FFFFFF;"></span></span></div>
-<div style="display: flex; align-items: center; gap: 9px; font-size: 11.5px; color: #5F6275;"><span style="flex: 1; width: 181.5px">Ottimizzazione LinkedIn</span><span style="width: 26.5px; height: 14.5px; border-radius: 728px; background: #D5D9E6; position: relative;"><span style="position: absolute; left: 2.5px; top: 2.5px; width: 10.5px; height: 10.5px; border-radius: 50%; background: #FFFFFF;"></span></span></div>
-<div style="display: flex; align-items: center; gap: 9px; font-size: 11.5px;"><span style="flex: 1;">Preparazione colloquio</span><span style="width: 26.5px; height: 14.5px; border-radius: 728px; background: #2444B0; position: relative;"><span style="position: absolute; right: 2.5px; top: 2.5px; width: 10.5px; height: 10.5px; border-radius: 50%; background: #FFFFFF;"></span></span></div>
-</div>
-</div>
-<div style="position: absolute; right: 0; bottom: 10.5px; display: flex; align-items: center; gap: 7px; background: #FFFFFF; border: 1.5px solid #14162B; border-radius: 7px; padding: 6px 10.5px 6px 6px; font-size: 10.5px; font-weight: 600; box-shadow: 0 8px 20px rgba(20, 22, 43, 0.08);"><span style="width: 20.5px; height: 20.5px; border-radius: 5.5px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></span>Paghi dopo la conferma su WhatsApp</div>
-</div>
-<div style="flex: 1 1 306px; min-width: 0; display: flex; flex-direction: column; gap: 13px;">
-<p style="margin: 0; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2444B0;">Prezzi chiari</p>
-<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(24px, 2.5vw, 34.5px); font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; color: #2444B0;">Paghi solo quello che ti serve</h2>
-<p style="margin: 0; font-size: 13.5px; line-height: 1.65; color: #3D4054;">Niente pacchetti obbligatori: la valutazione iniziale è gratuita, poi scegli tu quali servizi attivare. Uno solo, tre o tutti — a seconda di ciò di cui hai davvero bisogno.</p>
-<a href="/come-funziona" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 4.5px; font-size: 12.5px; font-weight: 600; color: #14162B; text-decoration: underline; text-underline-offset: 5px; padding: 6px 0;">Vedi tutti i servizi e i prezzi <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-</div>
-</div>
-</section>
-
-<section style="padding: 34.5px 17.5px;">
-<div style="max-width: 860.5px; margin: 0 auto; background: #F2F4FF; border-radius: 23.5px; padding: 52.5px 23.5px; box-sizing: border-box; text-align: center;">
-<p style="margin: 0 auto; max-width: 597.5px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(20.5px, 2.3vw, 30px); font-weight: 600; line-height: 1.25; letter-spacing: -0.015em; color: #2444B0;">Perché ampliare le prospettive su di te può cambiare anche il modo in cui guardi al tuo futuro lavorativo.</p>
-</div>
-</section>
-
-<section style="padding: 52.5px 17.5px 75.5px;">
-<div style="max-width: 860.5px; margin: 0 auto; display: flex; flex-direction: column; gap: 34.5px;">
-<div style="display: flex; flex-direction: column; align-items: center; gap: 10.5px; text-align: center;">
-<p style="margin: 0; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2444B0;">I nostri servizi</p>
-<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(24px, 2.5vw, 34.5px); font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; color: #14162B; max-width: 466.5px;">Tutto quello che ti serve per presentarti al meglio</h2>
-<p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #3D4054; max-width: 408px;">Dalla prima bozza del CV al colloquio finale: scegli il supporto che fa per te.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 17.5px;">
-
-<article style="flex: 1 1 233px; min-width: 0; background: #FFFFFF; border: 1px solid #E2E5F0; border-radius: 14.5px; padding: 20.5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px;">
-<span style="width: 32px; height: 32px; border-radius: 9px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M12 11v6M9 14h6"></path></svg></span>
-<h3 style="margin: 4.5px 0 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; color: #14162B;">Creazione CV</h3>
-<p style="margin: 0; font-size: 11.5px; line-height: 1.6; color: #3D4054; flex-grow: 1;">Che tu abbia già un CV o no, lo scriviamo da capo su misura: chiaro, moderno e professionale.</p>
-<a href="/creazione-cv" style="align-self: flex-start; font-size: 11.5px; font-weight: 600; color: #14162B; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;" aria-label="Scopri di più su Creazione CV">Scopri di più <span aria-hidden="true">→</span></a>
-</article>
-
-<article style="flex: 1 1 233px; min-width: 0; background: #FFFFFF; border: 1px solid #E2E5F0; border-radius: 14.5px; padding: 20.5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px;">
-<span style="width: 32px; height: 32px; border-radius: 9px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M6.5 16c.6-1.4 1.5-2 2.5-2s1.9.6 2.5 2"></path><path d="M14 10h4M14 14h3"></path></svg></span>
-<h3 style="margin: 4.5px 0 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; color: #14162B;">Ottimizzazione LinkedIn</h3>
-<p style="margin: 0; font-size: 11.5px; line-height: 1.6; color: #3D4054; flex-grow: 1;">Migliora la tua presenza online: analizziamo il tuo profilo e costruiamo un'immagine più efficace e competitiva.</p>
-<a href="/ottimizzazione-linkedin" style="align-self: flex-start; font-size: 11.5px; font-weight: 600; color: #14162B; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;" aria-label="Scopri di più su Ottimizzazione LinkedIn">Scopri di più <span aria-hidden="true">→</span></a>
-</article>
-
-<article style="flex: 1 1 233px; min-width: 0; background: #FFFFFF; border: 1px solid #E2E5F0; border-radius: 14.5px; padding: 20.5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px;">
-<span style="width: 32px; height: 32px; border-radius: 9px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
-<h3 style="margin: 4.5px 0 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; color: #14162B;">Lettera di presentazione</h3>
-<p style="margin: 0; font-size: 11.5px; line-height: 1.6; color: #3D4054; flex-grow: 1;">Una lettera che parla di te davvero: personalizzata per il ruolo e l'azienda a cui ti candidi.</p>
-<a href="/lettera-presentazione" style="align-self: flex-start; font-size: 11.5px; font-weight: 600; color: #14162B; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;" aria-label="Scopri di più su Lettera di presentazione">Scopri di più <span aria-hidden="true">→</span></a>
-</article>
-
-<article style="flex: 1 1 233px; min-width: 0; background: #FFFFFF; border: 1px solid #E2E5F0; border-radius: 14.5px; padding: 20.5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px;">
-<span style="width: 32px; height: 32px; border-radius: 9px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></span>
-<h3 style="margin: 4.5px 0 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; color: #14162B;">Messaggi per recruiter</h3>
-<p style="margin: 0; font-size: 11.5px; line-height: 1.6; color: #3D4054; flex-grow: 1;">Messaggi diretti e professionali per farti notare dai recruiter senza risultare invadente.</p>
-<a href="/messaggi-recruiter" style="align-self: flex-start; font-size: 11.5px; font-weight: 600; color: #14162B; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;" aria-label="Scopri di più su Messaggi per recruiter">Scopri di più <span aria-hidden="true">→</span></a>
-</article>
-
-<article style="flex: 1 1 233px; min-width: 0; background: #FFFFFF; border: 1px solid #E2E5F0; border-radius: 14.5px; padding: 20.5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px;">
-<span style="width: 32px; height: 32px; border-radius: 9px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"></rect><path d="M16 10l5-3v10l-5-3"></path></svg></span>
-<h3 style="margin: 4.5px 0 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; color: #14162B;">Preparazione colloquio</h3>
-<p style="margin: 0; font-size: 11.5px; line-height: 1.6; color: #3D4054; flex-grow: 1;">Simulazioni e feedback concreti per arrivare al colloquio con più sicurezza e meno ansia.</p>
-<a href="/preparazione-colloquio" style="align-self: flex-start; font-size: 11.5px; font-weight: 600; color: #14162B; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;" aria-label="Scopri di più su Preparazione colloquio">Scopri di più <span aria-hidden="true">→</span></a>
-</article>
-
-<article style="flex: 1 1 233px; min-width: 0; background: #FFFFFF; border: 1px solid #E2E5F0; border-radius: 14.5px; padding: 20.5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 9px;">
-<span style="width: 32px; height: 32px; border-radius: 9px; background: #D9E0FF; color: #2444B0; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4L3 6.5V20l6-2.5 6 2.5 6-2.5V4l-6 2.5z"></path><path d="M9 4v13.5M15 6.5V20"></path></svg></span>
-<h3 style="margin: 4.5px 0 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; color: #14162B;">Mappatura aziende</h3>
-<p style="margin: 0; font-size: 11.5px; line-height: 1.6; color: #3D4054; flex-grow: 1;">Sai già cosa cerchi ma non dove? Ti diamo 20 aziende adatte a te nelle zone che scegli, con il canale giusto per candidarti.</p>
-<a href="/mappatura-aziende" style="align-self: flex-start; font-size: 11.5px; font-weight: 600; color: #14162B; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;" aria-label="Scopri di più su Mappatura aziende">Scopri di più <span aria-hidden="true">→</span></a>
-</article>
-
-</div>
-</div>
-</section>
-
-<section style="background: #D9E0FF; border-radius: 34.5px 34.5px 0 0; padding: 64px 17.5px;">
-<div style="max-width: 554px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 13px; text-align: center;">
-<h2 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(24px, 2.7vw, 36px); font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; color: #14162B;">Hai un Curriculum Vitae?</h2>
-<p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #14162B;">Inviacelo: lo analizziamo e ti rispondiamo entro 2 giorni lavorativi.</p>
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 6px;">
-<a href="https://www.lavertt.app/" style="display: inline-flex; align-items: center; gap: 7px; min-height: 39px; padding: 0 19px; border-radius: 9px; background: #2444B0; color: #FFFFFF; font-size: 12.5px; font-weight: 600; text-decoration: none;">Inizia il questionario <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-
-<a href="https://wa.me/393780950535" style="display: inline-flex; align-items: center; gap: 7px; min-height: 39px; padding: 0 19px; border-radius: 9px; background: #2444B0; color: #FFFFFF; font-size: 12.5px; font-weight: 600; text-decoration: none;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg>Invia il CV su WhatsApp</a>
-
-</div>
-<p style="margin: 0; font-size: 11.5px; color: #3D4054;">La valutazione è gratuita e non ti obbliga a nulla.</p>
-</div>
-</section>
-
+  <section class="section ground-surface" id="faq" style="--hm: 2" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="faq-h">Domande frequenti</h2></div>
+      <div class="lv-faq2">
+        <div class="faq">
+          <div class="faq__item"><h3>Quanto costa la valutazione?</h3><p>Niente. Ti diciamo di cosa hai bisogno e poi decidi tu, senza obblighi.</p></div>
+          <div class="faq__item"><h3>Quando pago?</h3><p>Dopo la conferma su WhatsApp: carta, PayPal, bonifico o Satispay.</p></div>
+          <div class="faq__item"><h3>Posso pagare a rate?</h3><p>Sì, chiedicelo su WhatsApp quando ricevi la proposta.</p></div>
+          <div class="faq__item"><h3>E se consegnate in ritardo?</h3><p>Ti rimborsiamo tutto. I tempi di consegna sono scritti accanto a ogni servizio.</p></div>
+        </div>
+        <div class="faq">
+          <div class="faq__item"><h3>Il CV lo scrive l'intelligenza artificiale?</h3><p>No. Ogni CV, profilo e lettera lo legge e lo scrive una persona.</p></div>
+          <div class="faq__item"><h3>Non ho mai avuto un CV: va bene lo stesso?</h3><p>Sì. Partiamo da zero, con un questionario guidato sul tuo percorso.</p></div>
+          <div class="faq__item"><h3>Quando ricevo il CV?</h3><p>Entro 5 giorni lavorativi dal pagamento e dal questionario, in PDF e in Word.</p></div>
+          <div class="faq__item"><h3>Dove lavorate?</h3><p>Online, in tutta Italia: su WhatsApp e, per il colloquio di prova, in videochiamata.</p></div>
+        </div>
+      </div>
+      <p class="lv-ask"><span>Hai un'altra domanda? Ti risponde una persona entro 24 ore.</span><a class="link lv-wa" href="https://wa.me/393780950535"><img src="/assets/icons/whatsapp.svg" alt="" width="32" height="32" loading="lazy">Scrivici su WhatsApp</a></p>
+    </div>
+  </section>
 </main>
 
-<footer style="font-family: 'Inter', system-ui, sans-serif; color: #14162B; background: #FFFFFF;">
-<div style="max-width: 904px; margin: 0 auto; padding: 47px 17.5px 0; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 29.5px 34.5px;">
-<div style="flex: 2 1 204.5px; min-width: 0; display: flex; flex-direction: column; gap: 13px;">
-<a href="/" style="display: inline-flex; align-self: flex-start; text-decoration: none;"><img src="/logo.svg" alt="LAVERTT" style="height: 30px; width: auto; display: block;"></a>
-<p style="margin: 0; font-size: 11.5px; line-height: 1.6; color: #3D4054; max-width: 218.5px;">Il tuo percorso verso il lavoro, con metodo e umanità.</p>
-<div style="display: flex; gap: 7px;">
-<a href="#" aria-label="Instagram" style="width: 32px; height: 32px; border-radius: 7px; border: 1.5px solid #14162B; color: #14162B; display: flex; align-items: center; justify-content: center; box-sizing: border-box;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.5 6.5h.01"></path></svg></a>
-<a href="#" aria-label="LinkedIn" style="width: 32px; height: 32px; border-radius: 7px; border: 1.5px solid #14162B; color: #14162B; display: flex; align-items: center; justify-content: center; box-sizing: border-box;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10v7M8 7h.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"></path></svg></a>
-<a href="https://wa.me/393780950535" aria-label="WhatsApp" style="width: 32px; height: 32px; border-radius: 7px; border: 1.5px solid #14162B; color: #14162B; display: flex; align-items: center; justify-content: center; box-sizing: border-box;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12z"></path></svg></a>
-</div>
-</div>
-<div style="flex: 1 1 109.5px; min-width: 0; display: flex; flex-direction: column; gap: 11.5px;">
-<h2 style="margin: 0; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #14162B;">LAVERTT</h2>
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px;">
-<li><a href="/come-funziona" style="font-size: 11.5px; color: #3D4054; text-decoration: none;">Come funziona</a></li>
-</ul>
-</div>
-<div style="flex: 1 1 146px; min-width: 0; display: flex; flex-direction: column; gap: 11.5px;">
-<h2 style="margin: 0; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #14162B;">Servizi</h2>
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px;">
-<li><a href="/creazione-cv" style="font-size: 11.5px; color: #3D4054; text-decoration: none;">Creazione CV</a></li>
-<li><a href="/ottimizzazione-linkedin" style="font-size: 11.5px; color: #3D4054; text-decoration: none;">Ottimizzazione LinkedIn</a></li>
-<li><a href="/lettera-presentazione" style="font-size: 11.5px; color: #3D4054; text-decoration: none;">Lettera di presentazione</a></li>
-<li><a href="/messaggi-recruiter" style="font-size: 11.5px; color: #3D4054; text-decoration: none;">Messaggi per recruiter</a></li>
-<li><a href="/preparazione-colloquio" style="font-size: 11.5px; color: #3D4054; text-decoration: none;">Preparazione colloquio</a></li>
-<li><a href="/mappatura-aziende" style="font-size: 11.5px; color: #3D4054; text-decoration: none;">Mappatura aziende</a></li>
-</ul>
-</div>
-<div style="flex: 1 1 109.5px; min-width: 0; display: flex; flex-direction: column; gap: 11.5px;">
-<h2 style="margin: 0; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #14162B;">Info</h2>
-<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px;">
-<li><a href="/chi-siamo" style="font-size: 11.5px; color: #3D4054; text-decoration: none;">Chi siamo</a></li>
-<li><a href="https://wa.me/393780950535" style="font-size: 11.5px; color: #3D4054; text-decoration: none;">Invia il CV su WhatsApp</a></li>
-</ul>
-</div>
-</div>
-<div style="max-width: 904px; margin: 34.5px auto 0; padding: 0 17.5px 23.5px; box-sizing: border-box;">
-<div style="border-top: 1px solid #D5D9E6; padding-top: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 23.5px; font-size: 11.5px; color: #5F6275;">
-<a href="/privacy-policy" style="color: #5F6275; text-decoration: none;">Privacy Policy</a>
-<a href="/privacy-policy#cookies" style="color: #5F6275; text-decoration: none;">Cookie Policy</a>
-<button type="button" class="lv-ck-open" hidden>Preferenze cookie</button>
-<a href="/termini-e-condizioni" style="color: #5F6275; text-decoration: none;">Termini e Condizioni</a>
-<span style="margin-left: auto;">© 2026 LAVERTT — Tutti i diritti riservati</span>
-</div>
-</div>
+<footer class="footer closing" id="contatti" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Inizia dalla valutazione gratuita</h2>
+        <p>Nessun pagamento ora: entro 2 giorni lavorativi una persona ti scrive su WhatsApp di cosa hai bisogno.</p>
+      </div>
+      <a class="btn btn--primary btn--xl btn--wide" href="https://www.lavertt.app/">Inizia il questionario<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="/"><img src="/logo.svg" alt="LAVERTT" width="115" height="34" loading="lazy"></a>
+          <p class="footer__lede">CV, LinkedIn e colloqui per chi cerca lavoro. Tutto online, in tutta Italia.</p>
+        </div>
+        <div class="span-2 start-5 footer__col"><h3>Per candidarti</h3><ul>
+          <li><a href="/creazione-cv">Creazione CV</a></li>
+          <li><a href="/lettera-presentazione">Lettera di presentazione</a></li>
+          <li><a href="/mappatura-aziende">Mappatura aziende</a></li>
+        </ul></div>
+        <div class="span-2 footer__col"><h3>Per farti trovare</h3><ul>
+          <li><a href="/ottimizzazione-linkedin">Ottimizzazione LinkedIn</a></li>
+          <li><a href="/messaggi-recruiter">Messaggi per recruiter</a></li>
+          <li><a href="/preparazione-colloquio">Preparazione colloquio</a></li>
+        </ul></div>
+        <div class="span-2 footer__col"><h3>LAVERTT</h3><ul>
+          <li><a href="/come-funziona">Come funziona</a></li>
+          <li><a href="/come-funziona#prezzi">Prezzi</a></li>
+          <li><a href="/chi-siamo">Chi siamo</a></li>
+        </ul></div>
+        <div class="span-2 footer__col"><h3>Contatti</h3><ul>
+          <li><a class="lv-wa" href="https://wa.me/393780950535"><img src="/assets/icons/whatsapp.svg" alt="" width="20" height="20" loading="lazy">Invia il CV su WhatsApp</a></li>
+        </ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 LAVERTT</span>
+        <span class="lv-legal"><a href="/privacy-policy">Privacy e Cookie Policy</a><a href="/termini-e-condizioni">Termini e Condizioni</a><button type="button" class="lv-ck-open" hidden>Preferenze cookie</button></span>
+      </div>
+    </div>
+  </div>
 </footer>
-
-
-</div>
+<nav class="actionbar" aria-label="Azioni rapide">
+  <a class="btn btn--primary" href="https://www.lavertt.app/">Inizia il questionario</a>
+</nav>
+<script type="module" src="/assets/system.js"></script>
+<script type="module" src="/assets/motion/motion.js"></script>
+<script type="module" src="/assets/layout/layout.js"></script>
 <script>
-(function () {
-  document.querySelectorAll('.lv-dd').forEach(function (dd) {
-    var btn = dd.querySelector('.lv-dd-btn');
-    function set(open) { dd.classList.toggle('open', open); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
-    btn.addEventListener('click', function (e) { e.stopPropagation(); set(!dd.classList.contains('open')); });
-    dd.addEventListener('keydown', function (e) { if (e.key === 'Escape') { set(false); btn.focus(); } });
-    document.addEventListener('click', function (e) { if (!dd.contains(e.target)) set(false); });
-  });
-})();
-(function () {
-  document.documentElement.classList.add('js');
-  var els = document.querySelectorAll('section, footer');
-  els.forEach(function (el) { el.classList.add('lv-reveal'); });
-  if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('lv-in'); }); return; }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add('lv-in'); io.unobserve(en.target); }
-    });
-  }, { threshold: 0.12 });
-  els.forEach(function (el) { io.observe(el); });
-})();
 window.LV_COOKIE = {"pixel":"","show":true,"version":"1"};
 // Banner cookie LAVERTT
 // - Si accende da build.js: MOSTRA_BANNER_COOKIE e/o META_PIXEL_ID.

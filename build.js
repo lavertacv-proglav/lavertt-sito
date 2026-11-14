@@ -35,7 +35,7 @@ const NL = String.fromCharCode(10);
 
 // Nome file del canvas -> [percorso pubblico, file in uscita, titolo, descrizione]
 const PAGES = {
-  'Main': ['/', 'index.html', 'LAVERTT — Inizia il tuo percorso verso il lavoro', 'CV, LinkedIn, lettere e colloqui: prima capiamo di cosa hai bisogno, poi ti proponiamo solo quello. Valutazione iniziale gratuita, tutto online.'],
+  'Main': ['/', 'index.html', 'LAVERTT: CV, LinkedIn e colloqui per chi cerca lavoro', 'Una persona legge il tuo CV e in 2 giorni lavorativi ti dice su WhatsApp di cosa hai bisogno. Valutazione gratuita, poi paghi solo i servizi che scegli.'],
   'Come-funziona': ['/come-funziona', 'come-funziona.html', 'Come funziona e prezzi — LAVERTT', 'Come funziona LAVERTT e quanto costa: valutazione gratuita del CV, servizi singoli senza pacchetti, paghi solo quello che scegli.'],
   'Chi-siamo': ['/chi-siamo', 'chi-siamo.html', 'Chi siamo — LAVERTT', 'Chi c’è dietro LAVERTT: persone vere che leggono e scrivono il tuo materiale e ti seguono su WhatsApp.'],
   'Creazione-CV': ['/creazione-cv', 'creazione-cv.html', 'Creazione CV — LAVERTT', 'Il tuo CV scritto o rifatto da capo da una persona, in italiano o in inglese. 39€, consegna in 5 giorni lavorativi.'],
@@ -74,11 +74,24 @@ function addMain(html) {
   return swap(html, FOOTER_TAG, '</main>' + NL + NL + FOOTER_TAG);
 }
 
+// Pagine con la grafica nuova (v2): iniziano con <!-- v2 --> e usano {{HEADER}} e {{FOOTER}}
+const V2_MARK = '<!-- v2 -->';
+const isV2 = (html) => html.startsWith(V2_MARK);
+
 function transform(html) {
-  html = addMain(html);
-  // Header e Footer condivisi
-  html = swap(html, HEADER_TAG, read('partials/header.html'));
-  html = swap(html, FOOTER_TAG, read('partials/footer.html'));
+  if (isV2(html)) {
+    html = html.slice(V2_MARK.length);
+    if (count(html, '{{HEADER}}') !== 1 || count(html, '{{FOOTER}}') !== 1 || count(html, '<main id="top">') !== 1) {
+      throw new Error('Pagina v2: servono {{HEADER}}, {{FOOTER}} e <main id="top"> una volta sola');
+    }
+    html = swap(html, '{{HEADER}}', read('partials/v2/header.html'));
+    html = swap(html, '{{FOOTER}}', read('partials/v2/footer.html'));
+  } else {
+    html = addMain(html);
+    // Header e Footer condivisi
+    html = swap(html, HEADER_TAG, read('partials/header.html'));
+    html = swap(html, FOOTER_TAG, read('partials/footer.html'));
+  }
 
   // Logo: usa public/logo.svg o logo.png se presente, altrimenti la scritta LAVERTT
   const logos = [
@@ -123,6 +136,61 @@ if (META_PIXEL_ID && read('pages/Privacy-policy.html').includes('Non attivo')) {
   console.warn('ATTENZIONE: Pixel Meta attivo ma la Privacy Policy (sezione 10) dice ancora "Non attivo". Aggiornala.');
 }
 
+// Grafica nuova (v2): kit tasteskill in public/assets, stili LAVERTT in src/partials/v2/site.css.
+// Del vecchio base.css prende solo le regole del banner cookie.
+const COOKIE_CSS = BASE_CSS.split(NL).filter((l) => l.includes('.lv-ck')).join(NL);
+const V2_CSS = read('partials/v2/site.css');
+function pageV2({ title, desc, canonical, body }) {
+  return `<!doctype html>
+<html lang="it" data-type="service" data-radius="soft" data-buttons="arrow" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>${title}</title>
+<meta name="description" content="${desc}">
+<link rel="canonical" href="${canonical}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LAVERTT">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:url" content="${canonical}">
+<meta property="og:image" content="${SITE}/share.jpg">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plus-jakarta-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/system.css">
+<link rel="stylesheet" href="/assets/ui/cards.css">
+<link rel="stylesheet" href="/assets/motion/motion.css">
+<link rel="stylesheet" href="/assets/layout/layout.css">
+<link rel="stylesheet" href="/assets/icons/icon.css">
+<style>
+${V2_CSS}
+${COOKIE_CSS}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="/assets/moments/moments.js">
+<link rel="modulepreload" href="/assets/moments/lib.js">
+<link rel="modulepreload" href="/assets/moments/word-highlight/moment.js">
+<link rel="modulepreload" href="/assets/moments/pinned-chapters/moment.js">
+</head>
+<body>
+${body.trim()}
+<script type="module" src="/assets/system.js"></script>
+<script type="module" src="/assets/motion/motion.js"></script>
+<script type="module" src="/assets/layout/layout.js"></script>
+<script>
+${COOKIE_CONFIG}${read('partials/cookie.js')}</script>
+</body>
+</html>
+`;
+}
+
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 
@@ -133,6 +201,11 @@ for (const [name, [url, file, title, desc]] of Object.entries(PAGES)) {
   if (raw.includes('{{PRIVACY_EMAIL}}') && !PRIVACY_EMAIL) throw new Error('Manca PRIVACY_EMAIL in cima a build.js');
   const body = transform(raw);
   const canonical = SITE + url;
+  if (isV2(raw)) {
+    fs.writeFileSync(path.join(OUT, file), pageV2({ title, desc, canonical, body }));
+    console.log('ok  ' + file + ' (v2)');
+    continue;
+  }
   const page = `<!doctype html>
 <html lang="it">
 <head>
