@@ -56,10 +56,29 @@ const LOGO_FILE = ['logo.svg', 'logo.png'].find((f) => fs.existsSync(path.join(_
 const LOGO_BLOB = '/_blob/bb16287e8bc3c9f7eab98e379d6c6cb8';
 const wordmark = (size) => `<span style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: ${size}; font-weight: 700; letter-spacing: 0.04em; line-height: 1.15; color: #2444B0;">LAVERTT</span>`;
 
+// Accessibilità: l'header resta fuori, tutto il contenuto della pagina va dentro <main id="contenuto">
+// (serve al link "Salta al contenuto" e ai lettori di schermo). Lo sfondo lilla viene diviso in due
+// blocchi uguali (header + inizio pagina), quindi l'aspetto non cambia.
+const HEADER_TAG = '<dc-import name="Header" hint-size="100%,84px"></dc-import>';
+const FOOTER_TAG = '<dc-import name="Footer" hint-size="100%,470px"></dc-import>';
+const HERO_OPEN = '<div style="background: #D9E0FF; border-radius: 0 0 34.5px 34.5px;">';
+const count = (text, part) => text.split(part).length - 1;
+
+function addMain(html) {
+  const start = HERO_OPEN + NL + HEADER_TAG;
+  if (count(html, start) !== 1 || count(html, FOOTER_TAG) !== 1 || html.includes('<main')) {
+    throw new Error('Struttura della pagina diversa dal solito: impossibile aggiungere <main>');
+  }
+  html = swap(html, start, '<div style="background: #D9E0FF;">' + NL + HEADER_TAG + NL + '</div>' + NL
+    + '<main id="contenuto" tabindex="-1">' + NL + HERO_OPEN);
+  return swap(html, FOOTER_TAG, '</main>' + NL + NL + FOOTER_TAG);
+}
+
 function transform(html) {
+  html = addMain(html);
   // Header e Footer condivisi
-  html = swap(html, '<dc-import name="Header" hint-size="100%,84px"></dc-import>', read('partials/header.html'));
-  html = swap(html, '<dc-import name="Footer" hint-size="100%,470px"></dc-import>', read('partials/footer.html'));
+  html = swap(html, HEADER_TAG, read('partials/header.html'));
+  html = swap(html, FOOTER_TAG, read('partials/footer.html'));
 
   // Logo: usa public/logo.svg o logo.png se presente, altrimenti la scritta LAVERTT
   const logos = [
@@ -136,6 +155,7 @@ for (const [name, [url, file, title, desc]] of Object.entries(PAGES)) {
 ${BASE_CSS}</style>
 </head>
 <body>
+<a class="lv-skip" href="#contenuto">Salta al contenuto</a>
 ${body.trim()}
 <script>
 ${SCRIPT}</script>
