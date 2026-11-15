@@ -27,7 +27,7 @@
   var empty = document.getElementById('lv-sum-empty');
   var total = document.getElementById('lv-sum-total');
   var wa = document.getElementById('lv-sum-wa');
-  var waBase = wa.getAttribute('href');
+  var waBase = wa.getAttribute('href').split('?')[0];
   function render() {
     var chosen = [], sum = 0;
     inputs.forEach(function (i) { if (i.checked) { chosen.push(i); sum += Number(i.getAttribute('data-price')); } });

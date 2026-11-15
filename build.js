@@ -7,6 +7,9 @@ const path = require('path');
 // IMPOSTAZIONI DA MODIFICARE
 // Numero WhatsApp Business (formato internazionale senza + e spazi, es. 393331234567)
 const WHATSAPP_NUMBER = '393780950535';
+// Messaggio già scritto che compare quando si apre WhatsApp dai pulsanti del sito
+// (la pagina Prezzi usa invece l'elenco dei servizi scelti e il totale)
+const WHATSAPP_MESSAGE = 'Ciao! Vorrei la valutazione gratuita del mio CV.';
 // Link del questionario
 const QUIZ_URL = 'https://www.lavertt.app/';
 // Email per le richieste sulla privacy (pagina Privacy Policy)
@@ -14,10 +17,11 @@ const PRIVACY_EMAIL = 'privacy@lavertt.com';
 // Data dell'ultimo aggiornamento dei Termini e Condizioni
 const POLICY_DATE = '2 novembre 2026';
 // Data dell'ultimo aggiornamento della Privacy e Cookie Policy (pagina unica)
-const PRIVACY_DATE = '14 novembre 2026';
+const PRIVACY_DATE = '15 novembre 2026';
 // Banner cookie: true = compare al primo accesso anche se il Pixel Meta è spento.
 // false = compare solo quando il Pixel è attivo (con il Pixel attivo compare sempre).
-const MOSTRA_BANNER_COOKIE = true;
+// Oggi è false: il sito usa solo strumenti tecnici e statistiche senza cookie, quindi il banner non serve.
+const MOSTRA_BANNER_COOKIE = false;
 // Pixel Meta: incolla qui l'ID del Pixel (solo numeri) quando attivi le pubblicità.
 // Vuoto = Pixel spento. Con l'ID il Pixel parte solo dopo "Accetta", e il banner
 // viene richiesto di nuovo a tutti (anche a chi aveva già scelto).
@@ -26,6 +30,10 @@ const META_PIXEL_ID = '';
 // Versione delle scelte sui cookie: aumentala di 1 quando aggiungi o cambi uno strumento,
 // così il banner viene richiesto di nuovo a tutti.
 const COOKIE_VERSION = 1;
+// Statistiche delle visite (Cloudflare Web Analytics, senza cookie: non serve il banner).
+// Incolla qui il token che ti dà Cloudflare (solo lettere e numeri). Vuoto = statistiche spente.
+// La Privacy Policy si aggiorna da sola ("Attivo" / "Non ancora attivo").
+const CLOUDFLARE_ANALYTICS_TOKEN = '';
 // ---------------------------------------------------------------
 
 const SITE = 'https://lavertt.com';
@@ -97,13 +105,17 @@ function transform(html) {
   }
 
   // WhatsApp e questionario
-  html = swap(html, 'https://wa.me/390000000000', 'https://wa.me/' + WHATSAPP_NUMBER);
+  // Il numero nei Termini e Condizioni resta un semplice contatto, senza messaggio già scritto
+  html = swap(html, 'href="https://wa.me/390000000000">+39', 'href="https://wa.me/' + WHATSAPP_NUMBER + '">+39');
+  html = swap(html, 'https://wa.me/390000000000', 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(WHATSAPP_MESSAGE));
   html = swap(html, 'https://recruitment-platform-sable.vercel.app/', QUIZ_URL);
 
   // Dati delle pagine Privacy e Cookie
   html = swap(html, '{{PRIVACY_EMAIL}}', PRIVACY_EMAIL);
   html = swap(html, '{{PRIVACY_DATE}}', PRIVACY_DATE);
   html = swap(html, '{{POLICY_DATE}}', POLICY_DATE);
+  html = swap(html, '{{STAT_STATO}}', CLOUDFLARE_ANALYTICS_TOKEN ? 'Attivo' : 'Non ancora attivo');
+  html = swap(html, '{{STAT_NOTA}}', CLOUDFLARE_ANALYTICS_TOKEN ? '' : ' <strong>Non ancora attivo.</strong>');
   if (html.includes('{{')) throw new Error('Segnaposto non sostituito nella pagina');
 
   for (const leftover of ['/_blob/', '.dc.html', '<dc-import', '<x-dc', '<helmet', '<sc-']) {
@@ -113,6 +125,19 @@ function transform(html) {
 }
 
 if (!/^\d*$/.test(META_PIXEL_ID)) throw new Error('META_PIXEL_ID deve contenere solo numeri');
+if (!/^[A-Za-z0-9]*$/.test(CLOUDFLARE_ANALYTICS_TOKEN)) throw new Error('CLOUDFLARE_ANALYTICS_TOKEN deve contenere solo lettere e numeri');
+// Statistiche Cloudflare: script ufficiale, caricato in fondo alla pagina solo se c'è il token
+const ANALYTICS = CLOUDFLARE_ANALYTICS_TOKEN
+  ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${CLOUDFLARE_ANALYTICS_TOKEN}"}'></script>` + NL
+  : '';
+// Immagine di anteprima per Facebook, WhatsApp, LinkedIn (public/og-image.png, 1200x630)
+const OG_IMAGE = fs.existsSync(path.join(__dirname, 'public', 'og-image.png')) ? SITE + '/og-image.png' : '';
+const OG_TAGS = OG_IMAGE ? `<meta property="og:image" content="${OG_IMAGE}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="LAVERTT: valutazione gratuita del tuo CV, poi paghi solo quello che ti serve">
+<meta name="twitter:card" content="summary_large_image">
+` : '';
 const BASE_CSS = read('partials/base.css');
 const COOKIE_CONFIG = 'window.LV_COOKIE = ' + JSON.stringify({
   pixel: META_PIXEL_ID,
@@ -148,7 +173,7 @@ for (const [name, [url, file, title, desc]] of Object.entries(PAGES)) {
 <meta property="og:description" content="${desc}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:locale" content="it_IT">
-<meta name="theme-color" content="#D9E0FF">
+${OG_TAGS}<meta name="theme-color" content="#D9E0FF">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/plus-jakarta-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -160,7 +185,7 @@ ${BASE_CSS}</style>
 ${body.trim()}
 <script>
 ${SCRIPT}</script>
-</body>
+${ANALYTICS}</body>
 </html>
 `;
   fs.writeFileSync(path.join(OUT, file), page);
