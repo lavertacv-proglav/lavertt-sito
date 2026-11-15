@@ -33,7 +33,7 @@ const COOKIE_VERSION = 1;
 // Statistiche delle visite (Cloudflare Web Analytics, senza cookie: non serve il banner).
 // Incolla qui il token che ti dà Cloudflare (solo lettere e numeri). Vuoto = statistiche spente.
 // La Privacy Policy si aggiorna da sola ("Attivo" / "Non ancora attivo").
-const CLOUDFLARE_ANALYTICS_TOKEN = '';
+const CLOUDFLARE_ANALYTICS_TOKEN = '33a0f611ebda4995babebf0f16d8973f';
 // ---------------------------------------------------------------
 
 const SITE = 'https://lavertt.com';
@@ -128,7 +128,7 @@ if (!/^\d*$/.test(META_PIXEL_ID)) throw new Error('META_PIXEL_ID deve contenere 
 if (!/^[A-Za-z0-9]*$/.test(CLOUDFLARE_ANALYTICS_TOKEN)) throw new Error('CLOUDFLARE_ANALYTICS_TOKEN deve contenere solo lettere e numeri');
 // Statistiche Cloudflare: script ufficiale, caricato in fondo alla pagina solo se c'è il token
 const ANALYTICS = CLOUDFLARE_ANALYTICS_TOKEN
-  ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${CLOUDFLARE_ANALYTICS_TOKEN}"}'></script>` + NL
+  ? `<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "${CLOUDFLARE_ANALYTICS_TOKEN}"}'></script><!-- End Cloudflare Web Analytics -->` + NL
   : '';
 // Immagine di anteprima per Facebook, WhatsApp, LinkedIn (public/og-image.png, 1200x630)
 const OG_IMAGE = fs.existsSync(path.join(__dirname, 'public', 'og-image.png')) ? SITE + '/og-image.png' : '';
