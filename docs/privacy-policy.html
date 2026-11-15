@@ -14,8 +14,8 @@
 <meta property="og:locale" content="it_IT">
 <meta name="theme-color" content="#D9E0FF">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/plus-jakarta-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/bricolage-grotesque-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 body{margin: 0}
 html{scroll-behavior:smooth}
@@ -34,18 +34,19 @@ summary svg{transition:transform .15s}
 .lv-dd-menu a:focus-visible{outline-offset:-4px}
 .lv-dd-btn svg{transition:transform .15s}
 .lv-dd.open .lv-dd-btn svg{transform:rotate(180deg)}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-latin-400-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/inter-latin-600-normal.woff2) format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/instrument-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/instrument-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/instrument-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/instrument-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/bricolage-grotesque-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/bricolage-grotesque-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/bricolage-grotesque-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/caveat-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'Caveat';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/caveat-latin-600-normal.woff2) format('woff2')}
 .lv-legal{max-width: 760px;margin: 0 auto;padding: 72px 24px 104px;box-sizing:border-box;font-size: 17px;line-height:1.7;color:#3D4054}
-.lv-legal h2{margin: 47px 0 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 26px;font-weight:600;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
+.lv-legal h2{margin: 47px 0 14px;font-family:'Bricolage Grotesque',sans-serif;font-size: 26px;font-weight:600;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
 .lv-legal h2:first-child{margin-top: 0}
-.lv-legal h3{margin: 28px 0 10px;font-family:'Plus Jakarta Sans',sans-serif;font-size: 20px;font-weight:600;color:#14162B}
+.lv-legal h3{margin: 28px 0 10px;font-family:'Bricolage Grotesque',sans-serif;font-size: 20px;font-weight:600;color:#14162B}
 .lv-legal p{margin: 0 0 14px}
 .lv-legal ul{margin: 0 0 16px;padding-left: 22px}
 .lv-legal li{margin: 0 0 8px}
@@ -58,19 +59,19 @@ summary svg{transition:transform .15s}
 .lv-legal tr:last-child td{border-bottom:none}
 .lv-legal .lv-note{background:#F2F4FF;border-radius: 16px;padding: 18px 20px;margin: 0 0 20px;color:#14162B}
 a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #2444B0;outline-offset:3px}
-.lv-skip{position:absolute;left:12px;top:-80px;z-index:1100;padding:12px 18px;border-radius:999px;background:#14162B;color:#FFFFFF;font-family:'Inter',system-ui,sans-serif;font-size:14px;font-weight:600;text-decoration:none}
+.lv-skip{position:absolute;left:12px;top:-80px;z-index:1100;padding:12px 18px;border-radius:999px;background:#14162B;color:#FFFFFF;font-family:'Instrument Sans',system-ui,sans-serif;font-size:14px;font-weight:600;text-decoration:none}
 .lv-skip:focus,.lv-skip:hover{top:12px;color:#FFFFFF}
 #contenuto:focus{outline:none}
 a,button{transition:transform .2s ease,background-color .2s ease,color .2s ease,box-shadow .2s ease}
 a:hover{transform:translateY(-1px)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}a:hover{transform:none}}
-.lv-ck{position:fixed;inset:0;z-index:1000;display:flex;align-items:flex-end;justify-content:center;font-family:'Inter',system-ui,sans-serif;color:#14162B}
+.lv-ck{position:fixed;inset:0;z-index:1000;display:flex;align-items:flex-end;justify-content:center;font-family:'Instrument Sans',system-ui,sans-serif;color:#14162B}
 .lv-ck[hidden]{display:none}
 .lv-ck-lock,.lv-ck-lock body{overflow:hidden}
 .lv-ck-backdrop{position:absolute;inset:0;background:rgba(20,22,43,.45)}
 .lv-ck-box{position:relative;width:100%;max-width:560px;max-height:calc(100% - 24px);overflow-y:auto;box-sizing:border-box;margin:0;padding:26px 22px calc(22px + env(safe-area-inset-bottom));background:#FFFFFF;border:1.5px solid #14162B;border-bottom:none;border-radius:20px 20px 0 0;box-shadow:0 -12px 40px rgba(20,22,43,.18)}
 @media (min-width:640px){.lv-ck{align-items:center;padding:24px}.lv-ck-box{border-bottom:1.5px solid #14162B;border-radius:20px;padding:30px 30px 26px}}
-.lv-ck-box h2{margin:0 40px 12px 0;font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;font-weight:700;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
+.lv-ck-box h2{margin:0 40px 12px 0;font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:700;line-height:1.25;letter-spacing:-0.01em;color:#14162B}
 .lv-ck-box p{margin:0 0 10px;font-size:14px;line-height:1.6;color:#3D4054}
 .lv-ck-box strong{font-weight:600;color:#14162B}
 .lv-ck-box a{color:#2444B0;font-weight:500;text-underline-offset:3px}
@@ -115,10 +116,10 @@ details p{max-width:70ch}
 </head>
 <body>
 <a class="lv-skip" href="#contenuto">Salta al contenuto</a>
-<div style="font-family: 'Inter', system-ui, sans-serif; color: #14162B; background: #FFFFFF; min-width: 0; -webkit-font-smoothing: antialiased;">
+<div style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #14162B; background: #FFFFFF; min-width: 0; -webkit-font-smoothing: antialiased;">
 
 <div style="background: #D9E0FF;">
-<header style="font-family: 'Inter', system-ui, sans-serif; color: #14162B; max-width: 1228px; margin: 0 auto; padding: 16px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 36px;">
+<header style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #14162B; max-width: 1228px; margin: 0 auto; padding: 16px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 36px;">
 <a href="/" style="display: inline-flex; align-items: center; min-height: 60px; text-decoration: none;"><img src="/logo.svg" alt="LAVERTT" style="height: 38px; width: auto; display: block;"></a>
 <nav aria-label="Principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 28px; flex: 1 1 auto;">
 <div class="lv-dd">
@@ -143,7 +144,7 @@ details p{max-width:70ch}
 <div style="background: #D9E0FF; border-radius: 0 0 47px 47px;">
 <section style="padding: 40px 24px 72px;">
 <div style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px;">
-<h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(38px, 4.5vw, 59px); font-weight: 600; line-height: 1.08; letter-spacing: -0.025em; color: #14162B;">Privacy e Cookie Policy</h1>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(38px, 4.5vw, 59px); font-weight: 600; line-height: 1.08; letter-spacing: -0.025em; color: #14162B;">Privacy e Cookie Policy</h1>
 <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #14162B;">Come proteggiamo i tuoi dati: cosa raccogliamo, perché, per quanto tempo, quali cookie usa il sito e quali diritti hai.</p>
 <p style="margin: 0; font-size: 16px; color: #3D4054;">Ultimo aggiornamento e data di entrata in vigore: 14 novembre 2026</p>
 </div>
@@ -329,7 +330,7 @@ details p{max-width:70ch}
 
 </main>
 
-<footer style="font-family: 'Inter', system-ui, sans-serif; color: #14162B; background: #FFFFFF;">
+<footer style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #14162B; background: #FFFFFF;">
 <div style="max-width: 1228px; margin: 0 auto; padding: 64px 24px 0; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 40px 47px;">
 <div style="flex: 2 1 281px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
 <a href="/" style="display: inline-flex; align-self: flex-start; text-decoration: none;"><img src="/logo.svg" alt="LAVERTT" style="height: 41px; width: auto; display: block;"></a>

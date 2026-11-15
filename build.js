@@ -54,7 +54,7 @@ const swap = (text, from, to) => text.split(from).join(to);
 // Logo: public/logo.svg (vettoriale, preferito) oppure public/logo.png
 const LOGO_FILE = ['logo.svg', 'logo.png'].find((f) => fs.existsSync(path.join(__dirname, 'public', f)));
 const LOGO_BLOB = '/_blob/bb16287e8bc3c9f7eab98e379d6c6cb8';
-const wordmark = (size) => `<span style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: ${size}; font-weight: 700; letter-spacing: 0.04em; line-height: 1.15; color: #2444B0;">LAVERTT</span>`;
+const wordmark = (size) => `<span style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: ${size}; font-weight: 700; letter-spacing: 0.04em; line-height: 1.15; color: #2444B0;">LAVERTT</span>`;
 
 // Accessibilità: l'header resta fuori, tutto il contenuto della pagina va dentro <main id="contenuto">
 // (serve al link "Salta al contenuto" e ai lettori di schermo). Lo sfondo lilla viene diviso in due
@@ -149,8 +149,8 @@ for (const [name, [url, file, title, desc]] of Object.entries(PAGES)) {
 <meta property="og:locale" content="it_IT">
 <meta name="theme-color" content="#D9E0FF">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/plus-jakarta-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/bricolage-grotesque-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 ${BASE_CSS}</style>
 </head>
