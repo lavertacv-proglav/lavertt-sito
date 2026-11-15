@@ -44,7 +44,7 @@ const NL = String.fromCharCode(10);
 // Nome file del canvas -> [percorso pubblico, file in uscita, titolo, descrizione]
 const PAGES = {
   'Main': ['/', 'index.html', 'LAVERTT — Inizia il tuo percorso verso il lavoro', 'CV, LinkedIn, lettere e colloqui: prima capiamo di cosa hai bisogno, poi ti proponiamo solo quello. CV a 39€, tutto online.'],
-  'Come-funziona': ['/come-funziona', 'come-funziona.html', 'Come funziona — LAVERTT', 'Come funziona LAVERTT: compili il questionario, ti diciamo di quali servizi hai davvero bisogno e paghi solo quelli che scegli.'],
+  'Come-funziona': ['/come-funziona', 'come-funziona.html', 'Come funziona — LAVERTT', 'Come funziona LAVERTT: compili il questionario, ti diciamo di quali servizi hai davvero bisogno e scegli solo quelli che ti servono.'],
   'Prezzi': ['/prezzi', 'prezzi.html', 'Prezzi — LAVERTT', 'Servizi singoli da 25€ a 79€: scegli quello che ti serve e vedi subito il totale. Nessun pacchetto, nessun abbonamento.'],
   'Chi-siamo': ['/chi-siamo', 'chi-siamo.html', 'Chi siamo — LAVERTT', 'Chi c’è dietro LAVERTT: persone vere che leggono e scrivono il tuo materiale e ti seguono su WhatsApp.'],
   'Creazione-CV': ['/creazione-cv', 'creazione-cv.html', 'Creazione CV — LAVERTT', 'Il tuo CV scritto o rifatto da capo da una persona, in italiano o in inglese. 39€, consegna in 5 giorni lavorativi.'],
@@ -135,7 +135,7 @@ const OG_IMAGE = fs.existsSync(path.join(__dirname, 'public', 'og-image.png')) ?
 const OG_TAGS = OG_IMAGE ? `<meta property="og:image" content="${OG_IMAGE}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="LAVERTT: paghi solo i servizi che ti servono davvero, CV a 39€">
+<meta property="og:image:alt" content="LAVERTT: scegli solo i servizi che ti servono davvero, CV a 39€">
 <meta name="twitter:card" content="summary_large_image">
 ` : '';
 const BASE_CSS = read('partials/base.css');
