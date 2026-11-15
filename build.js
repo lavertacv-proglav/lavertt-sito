@@ -62,7 +62,7 @@ const wordmark = (size) => `<span style="display: block; font-family: 'Bricolage
 // blocchi uguali (header + inizio pagina), quindi l'aspetto non cambia.
 const HEADER_TAG = '<dc-import name="Header" hint-size="100%,84px"></dc-import>';
 const FOOTER_TAG = '<dc-import name="Footer" hint-size="100%,470px"></dc-import>';
-const HERO_OPEN = '<div style="background: #D9E0FF; border-radius: 0 0 47px 47px;">';
+const HERO_OPEN = '<div style="background: #D9E0FF; border-radius: 0 0 48px 48px;">';
 const count = (text, part) => text.split(part).length - 1;
 
 function addMain(html) {
