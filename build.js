@@ -82,8 +82,8 @@ function transform(html) {
 
   // Logo: usa public/logo.svg o logo.png se presente, altrimenti la scritta LAVERTT
   const logos = [
-    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 38px; width: auto; display: block;">`, '33px'],
-    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 41px; width: auto; display: block;">`, '36px'],
+    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 32px; width: auto; display: block;">`, '28px'],
+    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 34px; width: auto; display: block;">`, '30px'],
     [`<img src="${LOGO_BLOB}" alt="" style="width: 62%; height: auto; display: block;">`, 'clamp(47px, 6.9vw, 71px)'],
   ];
   for (const [tag, size] of logos) {
