@@ -61,7 +61,7 @@ const wordmark = (size) => `<span style="display: block; font-family: 'Plus Jaka
 // blocchi uguali (header + inizio pagina), quindi l'aspetto non cambia.
 const HEADER_TAG = '<dc-import name="Header" hint-size="100%,84px"></dc-import>';
 const FOOTER_TAG = '<dc-import name="Footer" hint-size="100%,470px"></dc-import>';
-const HERO_OPEN = '<div style="background: #D9E0FF; border-radius: 0 0 34.5px 34.5px;">';
+const HERO_OPEN = '<div style="background: #D9E0FF; border-radius: 0 0 47px 47px;">';
 const count = (text, part) => text.split(part).length - 1;
 
 function addMain(html) {
@@ -82,9 +82,9 @@ function transform(html) {
 
   // Logo: usa public/logo.svg o logo.png se presente, altrimenti la scritta LAVERTT
   const logos = [
-    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 28px; width: auto; display: block;">`, '24px'],
-    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 30px; width: auto; display: block;">`, '26px'],
-    [`<img src="${LOGO_BLOB}" alt="" style="width: 62%; height: auto; display: block;">`, 'clamp(34px, 5vw, 52px)'],
+    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 38px; width: auto; display: block;">`, '33px'],
+    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 41px; width: auto; display: block;">`, '36px'],
+    [`<img src="${LOGO_BLOB}" alt="" style="width: 62%; height: auto; display: block;">`, 'clamp(47px, 6.9vw, 71px)'],
   ];
   for (const [tag, size] of logos) {
     html = swap(html, tag, LOGO_FILE ? swap(tag, LOGO_BLOB, '/' + LOGO_FILE) : wordmark(size));
