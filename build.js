@@ -55,14 +55,14 @@ const swap = (text, from, to) => text.split(from).join(to);
 // Logo: public/logo.svg (vettoriale, preferito) oppure public/logo.png
 const LOGO_FILE = ['logo.svg', 'logo.png'].find((f) => fs.existsSync(path.join(__dirname, 'public', f)));
 const LOGO_BLOB = '/_blob/bb16287e8bc3c9f7eab98e379d6c6cb8';
-const wordmark = (size) => `<span style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: ${size}; font-weight: 700; letter-spacing: 0.04em; line-height: 1.15; color: #2444B0;">LAVERTT</span>`;
+const wordmark = (size) => `<span style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: ${size}; font-weight: 700; letter-spacing: 0.04em; line-height: 1.15; color: #2444B0;">LAVERTT</span>`;
 
 // Accessibilità: l'header resta fuori, tutto il contenuto della pagina va dentro <main id="contenuto">
 // (serve al link "Salta al contenuto" e ai lettori di schermo). Lo sfondo lilla viene diviso in due
 // blocchi uguali (header + inizio pagina), quindi l'aspetto non cambia.
 const HEADER_TAG = '<dc-import name="Header" hint-size="100%,84px"></dc-import>';
 const FOOTER_TAG = '<dc-import name="Footer" hint-size="100%,470px"></dc-import>';
-const HERO_OPEN = '<div style="background: #D9E0FF; border-radius: 0 0 48px 48px;">';
+const HERO_OPEN = '<div style="background: #D9E0FF; border-radius: 0 0 34.5px 34.5px;">';
 const count = (text, part) => text.split(part).length - 1;
 
 function addMain(html) {
@@ -83,9 +83,9 @@ function transform(html) {
 
   // Logo: usa public/logo.svg o logo.png se presente, altrimenti la scritta LAVERTT
   const logos = [
-    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 32px; width: auto; display: block;">`, '28px'],
-    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 34px; width: auto; display: block;">`, '30px'],
-    [`<img src="${LOGO_BLOB}" alt="" style="width: 62%; height: auto; display: block;">`, 'clamp(47px, 6.9vw, 71px)'],
+    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 28px; width: auto; display: block;">`, '24px'],
+    [`<img src="${LOGO_BLOB}" alt="LAVERTT" style="height: 30px; width: auto; display: block;">`, '26px'],
+    [`<img src="${LOGO_BLOB}" alt="" style="width: 62%; height: auto; display: block;">`, 'clamp(34px, 5vw, 52px)'],
   ];
   for (const [tag, size] of logos) {
     html = swap(html, tag, LOGO_FILE ? swap(tag, LOGO_BLOB, '/' + LOGO_FILE) : wordmark(size));
@@ -150,8 +150,8 @@ for (const [name, [url, file, title, desc]] of Object.entries(PAGES)) {
 <meta property="og:locale" content="it_IT">
 <meta name="theme-color" content="#D9E0FF">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/bricolage-grotesque-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plus-jakarta-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 ${BASE_CSS}</style>
 </head>
