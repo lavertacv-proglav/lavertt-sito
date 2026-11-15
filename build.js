@@ -37,6 +37,7 @@ const NL = String.fromCharCode(10);
 const PAGES = {
   'Main': ['/', 'index.html', 'LAVERTT — Inizia il tuo percorso verso il lavoro', 'CV, LinkedIn, lettere e colloqui: prima capiamo di cosa hai bisogno, poi ti proponiamo solo quello. Valutazione iniziale gratuita, tutto online.'],
   'Come-funziona': ['/come-funziona', 'come-funziona.html', 'Come funziona e prezzi — LAVERTT', 'Come funziona LAVERTT e quanto costa: valutazione gratuita del CV, servizi singoli senza pacchetti, paghi solo quello che scegli.'],
+  'Prezzi': ['/prezzi', 'prezzi.html', 'Prezzi — LAVERTT', 'Valutazione iniziale gratuita e servizi singoli da 25€ a 79€: scegli quello che ti serve e vedi subito il totale. Nessun pacchetto, nessun abbonamento.'],
   'Chi-siamo': ['/chi-siamo', 'chi-siamo.html', 'Chi siamo — LAVERTT', 'Chi c’è dietro LAVERTT: persone vere che leggono e scrivono il tuo materiale e ti seguono su WhatsApp.'],
   'Creazione-CV': ['/creazione-cv', 'creazione-cv.html', 'Creazione CV — LAVERTT', 'Il tuo CV scritto o rifatto da capo da una persona, in italiano o in inglese. 39€, consegna in 5 giorni lavorativi.'],
   'Ottimizzazione-LinkedIn': ['/ottimizzazione-linkedin', 'ottimizzazione-linkedin.html', 'Ottimizzazione LinkedIn — LAVERTT', 'Ottimizzazione del profilo LinkedIn: titolo, informazioni, esperienze e competenze riscritti perché i recruiter ti trovino.'],

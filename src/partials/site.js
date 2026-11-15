@@ -7,3 +7,35 @@
     document.addEventListener('click', function (e) { if (!dd.contains(e.target)) set(false); });
   });
 })();
+(function () {
+  var box = document.getElementById('lv-calc');
+  if (!box) return;
+  var inputs = box.querySelectorAll('input[data-price]');
+  var list = document.getElementById('lv-sum-list');
+  var empty = document.getElementById('lv-sum-empty');
+  var total = document.getElementById('lv-sum-total');
+  var wa = document.getElementById('lv-sum-wa');
+  var waBase = wa.getAttribute('href');
+  function render() {
+    var chosen = [], sum = 0;
+    inputs.forEach(function (i) { if (i.checked) { chosen.push(i); sum += Number(i.getAttribute('data-price')); } });
+    list.querySelectorAll('[data-scelto]').forEach(function (li) { li.remove(); });
+    chosen.forEach(function (i) {
+      var li = document.createElement('li');
+      li.className = 'lv-sum-row';
+      li.setAttribute('data-scelto', '');
+      var name = document.createElement('span'); name.textContent = i.getAttribute('data-name');
+      var price = document.createElement('span'); price.textContent = i.getAttribute('data-price') + '€';
+      li.appendChild(name); li.appendChild(price); list.appendChild(li);
+    });
+    empty.hidden = chosen.length > 0;
+    total.textContent = sum + '€';
+    var bar = document.getElementById('lv-bar-total'); if (bar) bar.textContent = sum + '€';
+    var text = chosen.length
+      ? 'Ciao! Mi interessano questi servizi: ' + chosen.map(function (i) { return i.getAttribute('data-name'); }).join(', ') + ' (totale ' + sum + '€).'
+      : 'Ciao! Vorrei la valutazione gratuita del mio CV.';
+    wa.setAttribute('href', waBase + '?text=' + encodeURIComponent(text));
+  }
+  inputs.forEach(function (i) { i.addEventListener('change', render); });
+  render();
+})();
