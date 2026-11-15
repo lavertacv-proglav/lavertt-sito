@@ -27,7 +27,9 @@
   var empty = document.getElementById('lv-sum-empty');
   var total = document.getElementById('lv-sum-total');
   var wa = document.getElementById('lv-sum-wa');
-  var waBase = wa.getAttribute('href').split('?')[0];
+  var waHref = wa.getAttribute('href');
+  var waBase = waHref.split('?')[0];
+  var waDefault = new URL(waHref, location.href).searchParams.get('text') || '';
   function render() {
     var chosen = [], sum = 0;
     inputs.forEach(function (i) { if (i.checked) { chosen.push(i); sum += Number(i.getAttribute('data-price')); } });
@@ -45,8 +47,8 @@
     var bar = document.getElementById('lv-bar-total'); if (bar) bar.textContent = sum + '€';
     var text = chosen.length
       ? 'Ciao! Mi interessano questi servizi: ' + chosen.map(function (i) { return i.getAttribute('data-name'); }).join(', ') + ' (totale ' + sum + '€).'
-      : 'Ciao! Vorrei la valutazione gratuita del mio CV.';
-    wa.setAttribute('href', waBase + '?text=' + encodeURIComponent(text));
+      : waDefault;
+    wa.setAttribute('href', text ? waBase + '?text=' + encodeURIComponent(text) : waBase);
   }
   inputs.forEach(function (i) { i.addEventListener('change', render); });
   render();

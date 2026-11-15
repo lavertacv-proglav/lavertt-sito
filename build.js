@@ -9,13 +9,13 @@ const path = require('path');
 const WHATSAPP_NUMBER = '393780950535';
 // Messaggio già scritto che compare quando si apre WhatsApp dai pulsanti del sito
 // (la pagina Prezzi usa invece l'elenco dei servizi scelti e il totale)
-const WHATSAPP_MESSAGE = 'Ciao! Vorrei la valutazione gratuita del mio CV.';
+const WHATSAPP_MESSAGE = 'Ciao! Vorrei qualche informazione sui servizi LAVERTT.';
 // Link del questionario
 const QUIZ_URL = 'https://www.lavertt.app/';
 // Email per le richieste sulla privacy (pagina Privacy Policy)
 const PRIVACY_EMAIL = 'privacy@lavertt.com';
 // Data dell'ultimo aggiornamento dei Termini e Condizioni
-const POLICY_DATE = '2 novembre 2026';
+const POLICY_DATE = '15 novembre 2026';
 // Data dell'ultimo aggiornamento della Privacy e Cookie Policy (pagina unica)
 const PRIVACY_DATE = '15 novembre 2026';
 // Banner cookie: true = compare al primo accesso anche se il Pixel Meta è spento.
@@ -43,9 +43,9 @@ const NL = String.fromCharCode(10);
 
 // Nome file del canvas -> [percorso pubblico, file in uscita, titolo, descrizione]
 const PAGES = {
-  'Main': ['/', 'index.html', 'LAVERTT — Inizia il tuo percorso verso il lavoro', 'CV, LinkedIn, lettere e colloqui: prima capiamo di cosa hai bisogno, poi ti proponiamo solo quello. Valutazione iniziale gratuita, tutto online.'],
-  'Come-funziona': ['/come-funziona', 'come-funziona.html', 'Come funziona e prezzi — LAVERTT', 'Come funziona LAVERTT e quanto costa: valutazione gratuita del CV, servizi singoli senza pacchetti, paghi solo quello che scegli.'],
-  'Prezzi': ['/prezzi', 'prezzi.html', 'Prezzi — LAVERTT', 'Valutazione iniziale gratuita e servizi singoli da 25€ a 79€: scegli quello che ti serve e vedi subito il totale. Nessun pacchetto, nessun abbonamento.'],
+  'Main': ['/', 'index.html', 'LAVERTT — Inizia il tuo percorso verso il lavoro', 'CV, LinkedIn, lettere e colloqui: prima capiamo di cosa hai bisogno, poi ti proponiamo solo quello. CV a 39€, tutto online.'],
+  'Come-funziona': ['/come-funziona', 'come-funziona.html', 'Come funziona — LAVERTT', 'Come funziona LAVERTT: compili il questionario, ti diciamo di quali servizi hai davvero bisogno e paghi solo quelli che scegli.'],
+  'Prezzi': ['/prezzi', 'prezzi.html', 'Prezzi — LAVERTT', 'Servizi singoli da 25€ a 79€: scegli quello che ti serve e vedi subito il totale. Nessun pacchetto, nessun abbonamento.'],
   'Chi-siamo': ['/chi-siamo', 'chi-siamo.html', 'Chi siamo — LAVERTT', 'Chi c’è dietro LAVERTT: persone vere che leggono e scrivono il tuo materiale e ti seguono su WhatsApp.'],
   'Creazione-CV': ['/creazione-cv', 'creazione-cv.html', 'Creazione CV — LAVERTT', 'Il tuo CV scritto o rifatto da capo da una persona, in italiano o in inglese. 39€, consegna in 5 giorni lavorativi.'],
   'Ottimizzazione-LinkedIn': ['/ottimizzazione-linkedin', 'ottimizzazione-linkedin.html', 'Ottimizzazione LinkedIn — LAVERTT', 'Ottimizzazione del profilo LinkedIn: titolo, informazioni, esperienze e competenze riscritti perché i recruiter ti trovino.'],
@@ -135,7 +135,7 @@ const OG_IMAGE = fs.existsSync(path.join(__dirname, 'public', 'og-image.png')) ?
 const OG_TAGS = OG_IMAGE ? `<meta property="og:image" content="${OG_IMAGE}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="LAVERTT: valutazione gratuita del tuo CV, poi paghi solo quello che ti serve">
+<meta property="og:image:alt" content="LAVERTT: paghi solo i servizi che ti servono davvero, CV a 39€">
 <meta name="twitter:card" content="summary_large_image">
 ` : '';
 const BASE_CSS = read('partials/base.css');
