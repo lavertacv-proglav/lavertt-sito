@@ -17,7 +17,7 @@ const PRIVACY_EMAIL = 'privacy@lavertt.com';
 // Data dell'ultimo aggiornamento dei Termini e Condizioni
 const POLICY_DATE = '15 novembre 2026';
 // Data dell'ultimo aggiornamento della Privacy e Cookie Policy (pagina unica)
-const PRIVACY_DATE = '15 novembre 2026';
+const PRIVACY_DATE = '17 novembre 2026';
 // Banner cookie: true = compare al primo accesso anche se il Pixel Meta è spento.
 // false = compare solo quando il Pixel è attivo (con il Pixel attivo compare sempre).
 // Oggi è false: il sito usa solo strumenti tecnici e statistiche senza cookie, quindi il banner non serve.
